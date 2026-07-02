@@ -377,6 +377,14 @@
 
     .img-placeholder{width:100%;border-radius:var(--radius);background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 12px,rgba(255,255,255,.01) 12px 24px);border:1.5px dashed rgba(255,210,77,.3);display:flex;align-items:center;justify-content:center;min-height:200px;margin-top:20px;color:rgba(255,210,77,.5);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
 
+
+    .ip-hero-box{background:rgba(15,30,56,.8);border:2px solid #FEE500;border-radius:24px;padding:36px;position:relative;overflow:hidden;margin-bottom:20px;}
+    .gorani-corner{position:absolute;bottom:-8px;right:16px;width:130px;}
+    .gorani-corner img{width:100%;background:transparent;}
+    .ip-title-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,3vw,36px);color:#FEE500;letter-spacing:2px;margin-bottom:12px;}
+    .ip-desc-text{font-size:15px;color:var(--muted);line-height:1.8;max-width:680px;}
+    .kakao-badge{display:inline-flex;align-items:center;gap:10px;background:#FEE500;color:#1B2A4A;font-weight:900;font-size:13px;padding:8px 20px;border-radius:30px;margin-top:16px;}
+
     .fade { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
     .fade.visible { opacity: 1; transform: translateY(0); }
 
@@ -426,7 +434,7 @@
       <div class="hero-main fade">
         <div class="hero-logo-wrap">
           <img src="images/title_EN.png" id="title-en" alt="Wacky! Deer&Munk Adventure" style="width:100%">
-          <img src="images/title_KR.png" id="title-kr" alt="우당탕탕 고라니와 다람쥐의 대모험" style="width:100%;display:none">
+          <img src="images/title_KR.png" id="title-kr" alt="우당탕탕 고라니와 다람쥐의 대모험" style="width:100%;display:none;object-fit:contain;max-height:200px;">
         </div>
         <div class="eyebrow" data-en="Publisher Pitch — Devolver Digital" data-kr="퍼블리셔 피치 — Devolver Digital">Publisher Pitch — Devolver Digital</div>
         <h1 data-en="ONE PATH.<br>TWO BODIES.<br>NEITHER ENOUGH ALONE." data-kr="하나의 길.<br>두 개의 몸.<br>둘이어야 완성된다.">ONE PATH.<br>TWO BODIES.<br>NEITHER ENOUGH ALONE.</h1>
@@ -724,41 +732,66 @@
 
     <section id="roadmap">
       <div class="container">
-        <div class="eyebrow fade">Production</div>
-        <h2 class="section-title fade">CURRENT BUILD AND NEXT MILESTONES</h2>
-        <div class="roadmap-timeline">
-          <div class="roadmap-line-track"><div class="roadmap-line-progress"></div></div>
-          <div class="roadmap-grid-inner">
-            <div class="timeline-card fade" style="text-align:center;">
-              <div class="roadmap-dot done">✓</div>
-              <div class="status done">Done</div>
-              <div class="card-title" data-en="Game Complete" data-kr="게임 완성">Game Complete</div>
-              <div class="card-copy" data-en="200 stages, 10 worlds, 200+ costumes, co-op system, 10 localizations." data-kr="200 스테이지, 10월드, 200+ 코스튬, 코옵 시스템, 10개 현지화.">200 stages, 10 worlds, 200+ costumes, co-op system, 10 localizations.</div>
+        <div class="eyebrow fade" data-en="Roadmap" data-kr="로드맵">Roadmap</div>
+        <h2 class="section-title fade" data-en="WHERE WE STAND" data-kr="우리는 지금 여기 있다">WHERE WE STAND</h2>
+
+        <div class="fade" style="margin-top:48px;position:relative;">
+          <!-- 라인 -->
+          <div style="position:absolute;top:24px;left:0;right:0;height:3px;background:rgba(255,255,255,.08);border-radius:2px;z-index:0;">
+            <div style="width:72%;height:100%;background:linear-gradient(90deg,#69d88a,var(--accent));border-radius:2px;"></div>
+          </div>
+          <!-- 스텝들 -->
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;position:relative;z-index:1;">
+
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:50%;background:#69d88a;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:18px;color:white;font-weight:900;">✓</div>
+              <div style="display:inline-block;background:#69d88a;color:#0a1a0a;font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;margin-bottom:8px;" data-en="DONE" data-kr="완료">DONE</div>
+              <div style="font-size:13px;font-weight:800;margin-bottom:4px;" data-en="GAME COMPLETE" data-kr="게임 완성">GAME COMPLETE</div>
+              <div style="font-size:11px;color:var(--muted);" data-en="Core content complete" data-kr="콘텐츠 완성">Core content complete</div>
             </div>
-            <div class="timeline-card fade" style="text-align:center;">
-              <div class="roadmap-dot done">✓</div>
-              <div class="status done">Done</div>
-              <div class="card-title" data-en="Nintendo Switch — Live" data-kr="닌텐도 스위치 — 출시 완료">Nintendo Switch — Live</div>
-              <div class="card-copy" data-en="Launched June 25, 2026. Self-published. KR/JP/EU/GB." data-kr="2026년 6월 25일 출시. 자체 퍼블리싱. 한국/일본/EU/GB.">Launched June 25, 2026. Self-published. KR/JP/EU/GB.</div>
+
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:50%;background:#69d88a;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:18px;color:white;font-weight:900;">✓</div>
+              <div style="display:inline-block;background:#69d88a;color:#0a1a0a;font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;margin-bottom:8px;" data-en="DONE" data-kr="완료">DONE</div>
+              <div style="font-size:13px;font-weight:800;margin-bottom:4px;" data-en="POLISHING & QA" data-kr="폴리싱 & QA">POLISHING & QA</div>
+              <div style="font-size:11px;color:var(--muted);" data-en="Co-op staging & quality up" data-kr="코옵 스테이징 & 품질 향상">Co-op staging & quality up</div>
             </div>
-            <div class="timeline-card fade" style="text-align:center;border-top:3px solid var(--accent);">
-              <div class="roadmap-dot now">🚀</div>
-              <div class="status now">Now</div>
-              <div class="card-title" data-en="Steam — Summer 2026" data-kr="스팀 — 2026년 여름">Steam — Summer 2026</div>
-              <div class="card-copy" data-en="App ID 1706282 registered. Coming Soon page in setup." data-kr="App ID 1706282 등록 완료. Coming Soon 페이지 준비 중.">App ID 1706282 registered. Coming Soon page in setup.</div>
+
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:50%;background:#69d88a;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:18px;color:white;font-weight:900;">✓</div>
+              <div style="display:inline-block;background:#69d88a;color:#0a1a0a;font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;margin-bottom:8px;" data-en="DONE" data-kr="완료">DONE</div>
+              <div style="font-size:13px;font-weight:800;margin-bottom:4px;" data-en="LOCALIZATION" data-kr="현지화">LOCALIZATION</div>
+              <div style="font-size:11px;color:var(--muted);">KR/EN/JP/ZH/TH<br>FR/IT/ES/DE/RU</div>
             </div>
-            <div class="timeline-card fade" style="text-align:center;">
-              <div class="roadmap-dot next"></div>
-              <div class="status next">Next</div>
-              <div class="card-title" data-en="Steam Next Fest" data-kr="스팀 넥스트 페스트">Steam Next Fest</div>
-              <div class="card-copy" data-en="October 2026. Demo participation target." data-kr="2026년 10월. 데모 참가 목표.">October 2026. Demo participation target.</div>
+
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:50%;background:#69d88a;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:18px;color:white;font-weight:900;">✓</div>
+              <div style="display:inline-block;background:#69d88a;color:#0a1a0a;font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;margin-bottom:8px;" data-en="DONE" data-kr="완료">DONE</div>
+              <div style="font-size:13px;font-weight:800;margin-bottom:4px;" data-en="LOT CHECK" data-kr="심사">LOT CHECK</div>
+              <div style="font-size:11px;color:var(--muted);" data-en="NSP Submission" data-kr="NSP 제출">NSP Submission</div>
             </div>
-            <div class="timeline-card fade" style="text-align:center;">
-              <div class="roadmap-dot next"></div>
-              <div class="status next">Next</div>
-              <div class="card-title" data-en="With Publisher" data-kr="퍼블리셔와 함께">With Publisher</div>
-              <div class="card-copy" data-en="QA, marketing, platform ops, global distribution." data-kr="QA, 마케팅 전략, 플랫폼 운영, 글로벌 유통.">QA, marketing, platform ops, global distribution.</div>
+
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:22px;">🚀</div>
+              <div style="display:inline-block;background:#8B7200;color:var(--accent);font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;margin-bottom:8px;" data-en="LAUNCHED!" data-kr="출시 완료!">LAUNCHED!</div>
+              <div style="font-size:13px;font-weight:800;margin-bottom:4px;" data-en="LAUNCHED!" data-kr="출시 완료!">LAUNCHED!</div>
+              <div style="font-size:11px;color:var(--muted);" data-en="Nintendo Switch™ June 25, 2026" data-kr="닌텐도 스위치™ 2026.6.25">Nintendo Switch™<br>June 25, 2026</div>
             </div>
+
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:50%;background:rgba(26,107,220,.3);border:2px solid #1a6bdc;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:22px;">🖥️</div>
+              <div style="display:inline-block;background:#1a6bdc;color:white;font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;margin-bottom:8px;" data-en="NEXT" data-kr="예정">NEXT</div>
+              <div style="font-size:13px;font-weight:800;margin-bottom:4px;">STEAM</div>
+              <div style="font-size:11px;color:var(--muted);" data-en="Summer 2026 · Coming Soon" data-kr="2026년 여름 · Coming Soon">Summer 2026<br>Coming Soon</div>
+            </div>
+
+            <div style="text-align:center;">
+              <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.06);border:2px dashed rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:22px;">＋</div>
+              <div style="display:inline-block;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;margin-bottom:8px;" data-en="POSSIBLE" data-kr="가능성">POSSIBLE</div>
+              <div style="font-size:13px;font-weight:800;margin-bottom:4px;color:rgba(255,255,255,.5);" data-en="PUBLISHER" data-kr="퍼블리셔">PUBLISHER</div>
+              <div style="font-size:11px;color:var(--muted);" data-en="Together?" data-kr="함께?">Together?</div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -768,6 +801,7 @@
       <div class="container">
         <div class="eyebrow fade" data-en="The Team" data-kr="개발팀">The Team</div>
         <h2 class="section-title fade">IDIOCRACY, INC</h2>
+        <p class="fade" style="font-size:16px;color:var(--accent);font-weight:700;margin-top:4px;letter-spacing:.08em;">PROVEN TRUST. 14 YEARS.</p>
         <div class="team-full">
           <div class="team-intro-box fade">
             <div class="team-intro-title" data-en="4 people. 14 years. Ships on time." data-kr="4명. 14년. 제때 출시한다.">4 people. 14 years. Ships on time.</div>
@@ -808,30 +842,40 @@
 
     <section id="ask">
       <div class="container">
-        <div class="eyebrow fade" data-en="Ask" data-kr="제안">Ask</div>
-        <h2 class="section-title fade" data-en="WHAT WE'RE LOOKING FOR" data-kr="우리가 찾는 것">WHAT WE'RE LOOKING FOR</h2>
-        <p class="section-sub fade" data-en="We make games. You know how to show them to the world. If both sides see the potential — let's find out together." data-kr="게임은 우리가 만든다. 세상에 보여주는 건 당신이 잘 한다. 서로 가능성이 보인다면 — 함께 확인해보자.">We make games. You know how to show them to the world. If both sides see the potential — let's find out together.</p>
-        <div class="ask-grid">
-          <div class="ask-card fade">
-            <div class="card-title" data-en="Funding" data-kr="자금 지원">Funding</div>
-            <div class="card-copy" data-en="Support final production, content completion, and polish without inflating the scope beyond the game's strongest identity." data-kr="게임의 핵심 정체성을 벗어나지 않는 선에서 최종 제작, 콘텐츠 완성, 폴리싱 지원.">Support final production, content completion, and polish without inflating the scope beyond the game's strongest identity.</div>
-          </div>
-          <div class="ask-card fade">
-            <div class="card-title" data-en="Marketing" data-kr="마케팅">Marketing</div>
-            <div class="card-copy" data-en="Turn the game's visual clarity and co-op reaction value into a sharper launch story and stronger discovery beats." data-kr="게임의 시각적 명확성과 코옵 리액션 가치를 날카로운 출시 스토리와 강력한 발견 포인트로 전환.">Turn the game's visual clarity and co-op reaction value into a sharper launch story and stronger discovery beats.</div>
-          </div>
-          <div class="ask-card fade">
-            <div class="card-title" data-en="Platform support" data-kr="플랫폼 지원">Platform support</div>
-            <div class="card-copy" data-en="Use publishing experience for QA, store positioning, release timing, and broader commercial execution." data-kr="QA, 스토어 포지셔닝, 출시 타이밍, 광범위한 상업적 실행에 퍼블리싱 경험 활용.">Use publishing experience for QA, store positioning, release timing, and broader commercial execution.</div>
+        <div class="eyebrow fade" data-en="What We're Looking For" data-kr="우리가 찾는 것">What We're Looking For</div>
+        <h2 class="section-title fade" data-en="NOT A PITCH. A QUESTION." data-kr="피치가 아니다. 질문이다.">NOT A PITCH. A QUESTION.</h2>
+
+        <!-- Why Devolver -->
+        <div class="fade" style="background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:28px;margin-top:28px;display:flex;align-items:center;gap:24px;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Devolver_Digital_logo.svg/320px-Devolver_Digital_logo.svg.png" alt="Devolver Digital" style="height:40px;filter:brightness(0) invert(1);opacity:.85;flex-shrink:0;">
+          <div>
+            <p data-en="Devolver has a strong eye for indie games with real potential. We'd like you to take a look at ours — play it, and tell us what you think. A Nintendo Switch key is available." data-kr="Devolver는 가능성 있는 인디게임을 알아보는 눈이 있다고 생각합니다. 우리 게임이 그런 게임인지 — 한번 봐주세요. 닌텐도 스위치 키를 드리겠습니다.">Devolver has a strong eye for indie games with real potential. We'd like you to take a look at ours — play it, and tell us what you think. A Nintendo Switch key is available.</p>
           </div>
         </div>
 
-        <div class="footer-callout fade">
-          <h3>WACKY! DEER&amp;MUNK ADVENTURE</h3>
-          <p data-en="Weird, toyetic, streamable, and already live on Nintendo Switch. Steam is next. If you see what we see — let's find out together." data-kr="이상하고, 장난감 같고, 스트리밍하기 좋고, 이미 닌텐도 스위치에 출시됐다. 스팀이 다음이다. 당신도 같은 게 보인다면 — 함께 확인해보자.">Weird, toyetic, streamable, and already live on Nintendo Switch. Steam is next. If you see what we see — let's find out together.</p>
-          <p style="font-size:15px;color:rgba(246,243,235,.5);margin:18px auto 20px;max-width:640px;" data-en="If you find the gameplay compelling — the IP is open to discussion." data-kr="게임이 매력적으로 보인다면 — IP는 협의 가능합니다.">If you find the gameplay compelling — the IP is open to discussion.</p>
+        <!-- 카드 3개 -->
+        <div class="ask-grid" style="margin-top:20px;">
+          <div class="panel fade">
+            <div class="card-title" data-en="💰 Funding" data-kr="💰 자금 지원">💰 Funding</div>
+            <div class="card-copy" data-en="If there's something worth fixing based on your feedback — we'll fix it. That's what the budget is for. $10,000 / month × 3 months." data-kr="피드백을 듣고 수정할 게 있으면 고칩니다. 그 과정에 필요한 비용입니다. 월 $10,000 × 3개월.">If there's something worth fixing based on your feedback — we'll fix it. That's what the budget is for. $10,000 / month × 3 months.</div>
+          </div>
+          <div class="panel fade">
+            <div class="card-title" data-en="📣 Marketing" data-kr="📣 마케팅">📣 Marketing</div>
+            <div class="card-copy" data-en="Global PR, influencer campaigns, platform featuring — publisher leads. We stay focused on the game." data-kr="글로벌 PR, 인플루언서 캠페인, 플랫폼 피처링 — 퍼블리셔 주도. 우리는 게임에 집중합니다.">Global PR, influencer campaigns, platform featuring — publisher leads. We stay focused on the game.</div>
+          </div>
+          <div class="panel fade">
+            <div class="card-title" data-en="🛠 QA & Platform" data-kr="🛠 QA & 플랫폼">🛠 QA & Platform</div>
+            <div class="card-copy" data-en="QA support for the Steam port and store positioning guidance." data-kr="스팀 포트 QA 지원 및 스토어 포지셔닝 가이드.">QA support for the Steam port and store positioning guidance.</div>
+          </div>
+        </div>
+
+        <!-- 마지막 문구 -->
+        <div class="footer-cta fade" style="margin-top:28px;">
+          <p data-en="If there's feedback — we'll listen and fix. If you don't see it, please tell us honestly. If you do — let's talk." data-kr="피드백이 있으면 듣고 고칩니다. 아니라고 생각하시면 솔직하게 말해주세요. 가능성이 보인다면 — 얘기합시다.">If there's feedback — we'll listen and fix. If you don't see it, please tell us honestly. If you do — let's talk.</p>
+          <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,96px);letter-spacing:.05em;margin:20px 0 8px;color:var(--text);">THANK YOU.</h2>
           <a class="contact-pill" href="mailto:contact@idiocracy.co.kr" style="text-decoration:none;">contact@idiocracy.co.kr</a>
         </div>
+
       </div>
     </section>
   </main>
@@ -861,3 +905,34 @@
   </script>
 </body>
 </html>
+
+    <div class="divider"></div>
+
+    <section id="appendix">
+      <div class="container">
+        <div class="eyebrow fade" data-en="Appendix — IP Flexibility" data-kr="부록 — IP 유연성">Appendix — IP Flexibility</div>
+        <h2 class="section-title fade" data-en="SAME ENGINE. THE IP IS A VARIABLE." data-kr="같은 엔진. IP는 바꿀 수 있다.">SAME ENGINE. THE IP IS A VARIABLE.</h2>
+        <p class="section-sub fade" data-en="Before landing on the current IP, we explored original characters across different tones and genres. The mechanics and engine are IP-agnostic. If you see a better fit — that conversation is open." data-kr="현재 IP로 오기 전, 다른 톤과 장르의 오리지널 캐릭터들을 탐색했습니다. 엔진과 메카닉은 IP에 종속되지 않습니다. 더 맞는 IP가 있다면 — 그 대화는 열려 있습니다.">Before landing on the current IP, we explored original characters across different tones and genres. The mechanics and engine are IP-agnostic. If you see a better fit — that conversation is open.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:28px;align-items:center;">
+          <div class="fade" style="text-align:center;">
+            <div style="background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:12px;">
+              <img src="images/redhood2.gif" alt="Red Hood character" style="height:120px;object-fit:contain;margin:0 auto;">
+            </div>
+            <div style="font-size:12px;color:var(--muted);" data-en="Fairy tale spin-off concept" data-kr="동화 스핀오프 컨셉">Fairy tale spin-off concept</div>
+          </div>
+          <div class="fade" style="text-align:center;">
+            <div style="background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:12px;">
+              <img src="images/dark_fantasy.png" alt="Dark fantasy concept" style="height:120px;object-fit:contain;margin:0 auto;">
+            </div>
+            <div style="font-size:12px;color:var(--muted);" data-en="Dark fantasy combat concept" data-kr="다크 판타지 전투 컨셉">Dark fantasy combat concept</div>
+          </div>
+          <div class="fade" style="text-align:center;">
+            <div style="background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:12px;">
+              <img src="images/Profile_Deer.png" alt="Current IP" style="height:120px;object-fit:contain;margin:0 auto;">
+            </div>
+            <div style="font-size:12px;color:var(--accent);font-weight:700;" data-en="Current — KakaoTalk IP" data-kr="현재 — 카카오톡 IP">Current — KakaoTalk IP</div>
+          </div>
+        </div>
+      </div>
+    </section>
