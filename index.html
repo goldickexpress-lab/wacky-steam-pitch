@@ -178,6 +178,7 @@
     .ask-grid { display: grid; gap: 18px; }
     .grid-3,
     .ask-grid { grid-template-columns: repeat(3, 1fr); }
+    #hook .grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
     .shot-grid { grid-template-columns: repeat(3, 1fr); margin-top: 28px; }
     .ip-grid { grid-template-columns: repeat(4, 1fr); margin-top: 28px; }
     .roadmap-grid { grid-template-columns: repeat(5, 1fr); margin-top: 28px; }
@@ -383,6 +384,7 @@
       .hero-grid, .split, .team-grid { grid-template-columns: 1fr; }
       .grid-3, .shot-grid, .ask-grid, .ip-grid { grid-template-columns: 1fr 1fr; }
       .roadmap-grid { grid-template-columns: 1fr 1fr; }
+      #hook .grid-3, #gameplay-loop .grid-3, .ask-grid { grid-template-columns: repeat(3, 1fr) !important; }
     }
     @media (max-width: 640px) {
       section { padding: 68px 0; }
@@ -771,6 +773,7 @@
         <div class="footer-callout fade">
           <h3>WACKY! DEER&amp;MUNK ADVENTURE</h3>
           <p data-en="Weird, toyetic, streamable, and already live on Nintendo Switch. Steam is next. If you see what we see — let's find out together." data-kr="이상하고, 장난감 같고, 스트리밍하기 좋고, 이미 닌텐도 스위치에 출시됐다. 스팀이 다음이다. 당신도 같은 게 보인다면 — 함께 확인해보자.">Weird, toyetic, streamable, and already live on Nintendo Switch. Steam is next. If you see what we see — let's find out together.</p>
+          <p style="font-size:15px;color:rgba(246,243,235,.5);margin:18px auto 20px;max-width:640px;" data-en="If you find the gameplay compelling — the IP is open to discussion." data-kr="게임이 매력적으로 보인다면 — IP는 협의 가능합니다.">If you find the gameplay compelling — the IP is open to discussion.</p>
           <a class="contact-pill" href="mailto:contact@idiocracy.co.kr" style="text-decoration:none;">contact@idiocracy.co.kr</a>
         </div>
       </div>
