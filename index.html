@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wacky! Deer&amp;Munk Adventure — Publisher Pitch</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+KR:wght@400;700&family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#FFD700;--orange:#C9A800;--dark:#0D1828;--brown:#0F1E38;--cream:#F8F6EE;--white:#FFFFFF;--green:#27AE60;--kakao:#FEE500;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--dark);font-family:'Noto Sans KR','Noto Sans JP',sans-serif;color:var(--cream);overflow-x:hidden;}
+img{background:transparent;}
+
+
+/* SCREENSHOT SLIDER */
+.screenshot-slider-wrap{position:relative;overflow:hidden;border-radius:16px;background:#0D1828;margin-top:32px;}
+.screenshot-slider{display:flex;transition:transform .4s cubic-bezier(.4,0,.2,1);}
+.slide-item{min-width:100%;position:relative;cursor:pointer;}
+.slide-item img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;}
+.slide-caption{position:absolute;bottom:0;left:0;right:0;padding:12px 20px;background:linear-gradient(transparent,rgba(13,24,40,.92));font-size:13px;color:var(--gold);font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(13,24,40,.7);border:2px solid var(--gold);color:var(--gold);font-size:20px;width:44px;height:44px;border-radius:50%;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;transition:all .2s;backdrop-filter:blur(4px);}
+.slider-btn:hover{background:var(--gold);color:var(--dark);}
+.slider-btn.prev{left:12px;}
+.slider-btn.next{right:12px;}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;}
+.slider-dot{width:8px;height:8px;border-radius:50%;background:rgba(245,168,0,.3);cursor:pointer;transition:all .2s;border:none;padding:0;}
+.slider-dot.active{background:var(--gold);transform:scale(1.3);}
+
+
+/* CHAR GIF ROW */
+.char-gifs{display:flex;gap:8px;justify-content:center;padding:12px 24px 8px;background:rgba(0,0,0,.15);}
+.char-gif-item{width:72px;height:72px;border-radius:8px;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;}
+.char-gif-item img{width:100%;height:100%;object-fit:contain;background:transparent;}
+
+/* LANG TOGGLE */
+.lang-toggle{position:fixed;top:20px;right:24px;z-index:9999;display:flex;gap:4px;background:rgba(13,24,40,.92);border:2px solid var(--gold);border-radius:30px;padding:4px;backdrop-filter:blur(8px);}
+.lang-btn{padding:6px 16px;border-radius:24px;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:13px;transition:all .25s;background:transparent;color:var(--gold);}
+.lang-btn.active{background:var(--gold);color:var(--dark);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:60px 20px 40px;background:linear-gradient(160deg,var(--dark) 0%,#0F1E38 60%,#1A2E50 100%);}
+.nintendo-logos{display:flex;gap:12px;margin-bottom:24px;position:relative;z-index:1;}
+.nintendo-logos img{height:90px;object-fit:contain;background:transparent;}
+.hero-title-img{width:100%;max-width:680px;position:relative;z-index:1;margin:0 auto 8px;}
+.hero-title-img img{width:100%;background:transparent;} .title-img{border-radius:16px;} .title-show{display:block!important;} .title-hide{display:none!important;}
+.hero-main{font-family:'Anton','Noto Sans KR',sans-serif;font-size:clamp(28px,4vw,44px);color:var(--white);font-weight:400;text-align:center;margin-top:24px;letter-spacing:2px;position:relative;z-index:1;line-height:1.2;}.hero-main.lang-jp{font-weight:900;font-family:'Noto Sans JP',sans-serif;}
+.hero-sub{font-size:15px;color:var(--gold);text-align:center;margin-top:8px;font-style:italic;font-weight:500;position:relative;z-index:1;}
+.hero-divider{width:120px;height:3px;background:var(--gold);margin:16px auto;border-radius:2px;position:relative;z-index:1;}
+.hero-meta{font-size:12px;color:rgba(255,248,238,.5);text-align:center;letter-spacing:2px;position:relative;z-index:1;}
+.readiness-badge{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#1a6b2a,#27AE60);color:white;font-weight:700;font-size:13px;padding:10px 24px;border-radius:30px;margin-top:20px;position:relative;z-index:1;letter-spacing:1px;animation:pulse-green 2.5s infinite;}
+@keyframes pulse-green{0%,100%{box-shadow:0 4px 20px rgba(39,174,96,.4);}50%{box-shadow:0 4px 32px rgba(39,174,96,.7);}}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(255,248,238,.4);letter-spacing:2px;text-transform:uppercase;animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+
+/* SECTIONS */
+section{padding:80px 24px;max-width:1100px;margin:0 auto;}
+.section-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;}
+.section-title{font-family:'Bebas Neue','Noto Sans KR',cursive;font-size:clamp(36px,5vw,56px);color:var(--white);line-height:1.1;margin-bottom:16px;letter-spacing:2px;}
+.section-sub{font-size:16px;color:rgba(255,248,238,.65);line-height:1.7;max-width:600px;font-weight:400;}
+.divider{width:100%;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+
+/* STORY */
+#story{background:var(--dark);}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px;}
+.story-img{border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.5);}
+.story-img img{width:100%;display:block;background:transparent;}
+.story-quote-block{grid-column:1/-1;background:var(--brown);border-radius:16px;padding:36px 48px;border-left:5px solid var(--gold);position:relative;}
+.story-quote-mark{font-family:'Noto Serif KR',serif;font-size:80px;color:rgba(245,168,0,.15);line-height:0.8;position:absolute;top:24px;left:20px;}
+.story-quote-text{font-family:'Noto Serif KR',serif;font-size:17px;line-height:2.1;color:var(--cream);font-style:italic;font-weight:400;padding-left:28px;}
+
+/* FEATURES */
+#features{background:#111F33;}
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px;}
+.feature-card{background:var(--brown);border-radius:16px;padding:28px 24px;border-top:4px solid var(--gold);transition:transform .25s;}
+.feature-card:hover{transform:translateY(-6px);}
+.feature-num{font-family:'Anton',sans-serif;font-size:64px;color:var(--gold);line-height:1;margin-bottom:8px;}
+.feature-title{font-size:14px;font-weight:700;color:var(--white);letter-spacing:-0.3px;line-height:1.4;margin-bottom:8px;}
+.feature-desc{font-size:14px;color:rgba(255,248,238,.65);line-height:1.65;font-weight:400;}
+
+/* CHARACTERS */
+#characters{background:var(--dark);}
+.char-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px;}
+.char-card{background:var(--brown);border-radius:20px;overflow:hidden;border-top:4px solid var(--gold);}
+.char-header{display:flex;align-items:center;gap:16px;padding:20px 24px 0;}
+.char-profile{width:80px;height:80px;border-radius:50%;overflow:hidden;flex-shrink:0;background:transparent;}
+.char-profile img{width:100%;height:100%;object-fit:cover;background:transparent;}
+.char-name{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);letter-spacing:2px;}
+.char-type{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:2px;}
+.char-screenshots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px 24px;}
+.char-shot{border-radius:8px;overflow:hidden;cursor:pointer;position:relative;}
+.char-shot img{width:100%;display:block;transition:transform .3s;background:transparent;}
+.char-shot:hover img{transform:scale(1.05);}
+.char-shot-label{font-size:10px;color:rgba(255,248,238,.5);text-align:center;margin-top:4px;font-weight:500;}
+.char-abilities{padding:0 24px 20px;font-size:14px;color:rgba(255,248,238,.75);line-height:1.7;font-weight:400;border-top:1px solid rgba(255,255,255,.05);margin-top:8px;padding-top:16px;}
+
+/* SCREENSHOTS */
+#screenshots{background:#0F1E38;}
+.screens-masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px;}
+.screen-item{border-radius:12px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(0,0,0,.4);}
+.screen-item img{width:100%;display:block;background:transparent;}
+.screen-item-ph{width:100%;aspect-ratio:16/9;background:#2a2a2a;border:2px dashed #444;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;}
+.screen-item-ph span{font-size:11px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:1px;font-weight:700;}
+.screen-label{position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(transparent,rgba(13,24,40,.9));font-size:11px;color:var(--gold);letter-spacing:1px;font-weight:700;}
+.screen-item.wide{grid-column:span 1;}
+
+/* CO-OP */
+#coop{background:var(--dark);}
+.coop-slogan{font-family:'Bebas Neue','Noto Sans KR',sans-serif;font-size:clamp(40px,6vw,72px);line-height:1.05;color:var(--white);margin-bottom:40px;letter-spacing:2px;text-align:center;}
+.coop-slogan span{color:var(--gold);}
+.coop-screens{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px;}
+.coop-screen{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;}
+.coop-screen img{width:100%;display:block;transition:transform .3s;background:transparent;}
+.coop-screen:hover img{transform:scale(1.03);}
+.coop-screen-ph{width:100%;aspect-ratio:16/9;background:#2a2a2a;border:2px dashed #444;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,.2);text-transform:uppercase;font-weight:700;}
+.coop-screen-label{position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(transparent,rgba(13,24,40,.9));font-size:12px;color:var(--gold);font-weight:700;}
+.gimmick-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.gimmick{background:var(--brown);border-radius:12px;padding:20px 24px;border-left:4px solid var(--gold);}
+.gimmick-name{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:2px;}
+.gimmick-desc{font-size:14px;color:rgba(255,248,238,.7);margin-top:6px;font-weight:400;line-height:1.6;}
+
+/* REFERENCES */
+#references{background:#111F33;}
+.ref-intro{font-size:18px;color:var(--cream);line-height:1.8;font-weight:400;margin-bottom:48px;max-width:800px;}
+.ref-intro strong{color:var(--gold);}
+.refs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.ref-card{background:var(--brown);border-radius:16px;overflow:hidden;border-top:4px solid;transition:transform .25s;}
+.ref-card:hover{transform:translateY(-6px);}
+.ref-img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:transparent;}
+.ref-info{padding:20px;}
+.ref-title{font-size:16px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.ref-tag{font-size:13px;font-style:italic;opacity:.7;font-weight:400;}
+
+/* IP SECTION */
+#ip-section{background:#0F1E38;}
+.ip-hero-box{background:#0F1E38;border:2px solid var(--kakao);border-radius:24px;padding:40px;margin-bottom:40px;position:relative;overflow:hidden;}
+.gorani-corner{position:absolute;bottom:-8px;right:16px;width:130px;background:transparent;z-index:0;}
+.gorani-corner img{width:100%;background:transparent;}
+.ip-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,44px);color:var(--gold);letter-spacing:2px;margin-bottom:12px;position:relative;z-index:1;}
+.ip-desc{font-size:16px;color:var(--cream);line-height:1.8;max-width:680px;font-weight:400;position:relative;z-index:1;}
+.kakao-badge{display:inline-flex;align-items:center;gap:10px;background:var(--kakao);color:#1B2A4A;border:none;font-weight:900;font-size:13px;padding:8px 20px;border-radius:30px;margin-top:16px;position:relative;z-index:1;}
+.kakao-svg{width:20px;height:20px;flex-shrink:0;}
+.ip-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
+.ip-stat{background:var(--brown);border-radius:16px;padding:24px 20px;text-align:center;border-top:4px solid var(--gold);}
+.ip-stat-num{font-family:'Anton',sans-serif;font-size:44px;color:var(--gold);line-height:1;margin-bottom:6px;}
+.ip-stat-label{font-size:12px;color:rgba(255,248,238,.65);line-height:1.5;font-weight:500;}
+.ip-evidence{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.evidence-card{background:var(--brown);border-radius:16px;overflow:hidden;border-left:5px solid;}
+.evidence-card.gold{border-color:var(--gold);}
+.evidence-card.orange{border-color:var(--gold);}
+.evidence-card.green{border-color:var(--green);}
+.evidence-card.kakao-color{border-color:var(--kakao);}
+.evidence-img{width:100%;display:block;background:transparent;}
+.evidence-body{padding:20px 24px;}
+.evidence-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.evidence-desc{font-size:14px;color:rgba(255,248,238,.7);line-height:1.7;font-weight:400;}
+.evidence-link{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--gold);background:rgba(245,168,0,.1);padding:4px 12px;border-radius:20px;border:1px solid rgba(245,168,0,.3);text-decoration:none;}
+.evidence-link:hover{background:rgba(245,168,0,.2);}
+.highlight-yellow{color:var(--gold);font-weight:900;}
+
+/* ROADMAP */
+#roadmap{background:var(--dark);}
+.roadmap-track{position:relative;margin-top:60px;padding-bottom:20px;}
+.roadmap-line{position:absolute;top:28px;left:0;right:0;height:4px;background:rgba(255,255,255,.1);border-radius:2px;}
+.roadmap-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;position:relative;}
+.rm-step{text-align:center;}
+.rm-dot{width:56px;height:56px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;position:relative;z-index:1;border:3px solid;}
+.rm-dot.done{background:var(--green);border-color:var(--green);color:white;}
+.rm-dot.current{background:var(--gold);border-color:var(--gold);color:white;animation:pulse-orange 2s infinite;}
+@keyframes pulse-orange{0%,100%{box-shadow:0 0 0 0 rgba(224,96,16,.4);}50%{box-shadow:0 0 0 12px rgba(224,96,16,0);}}
+.rm-dot.future{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3);color:rgba(255,255,255,1);font-size:24px;}
+.rm-title{font-size:13px;font-weight:700;color:var(--white);letter-spacing:1px;margin-bottom:6px;line-height:1.3;}
+.rm-sub{font-size:11px;color:rgba(255,248,238,.5);line-height:1.5;font-weight:400;}
+.rm-badge-done{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:6px;background:var(--green);color:white;}
+.rm-badge-now{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:6px;background:var(--gold);color:white;animation:blink .8s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.5;}}
+
+/* TEAM */
+#team{background:#111F33;}
+.company-intro-box{background:var(--brown);border-radius:20px;padding:40px;margin-bottom:48px;border-left:6px solid var(--gold);}
+.company-intro-title{font-family:'Noto Sans KR','Noto Sans JP',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:900;color:var(--gold);letter-spacing:1px;margin-bottom:16px;}
+.company-intro-text p{font-size:15px;color:var(--cream);line-height:1.9;margin-bottom:10px;font-weight:400;}
+.company-eq{font-size:13px;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-top:16px;}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.team-card{background:#0F1E38;border-radius:20px;overflow:hidden;text-align:center;transition:transform .25s;border:1px solid rgba(255,215,0,0.25);border-top:4px solid var(--gold);}
+.team-card:hover{transform:translateY(-8px);}
+.team-avatar{width:100%;aspect-ratio:1;overflow:hidden;background:#0D1828;border-bottom:2px solid rgba(255,215,0,0.4);}
+.team-avatar img{width:100%;height:100%;object-fit:cover;background:#0D1828;}
+.team-info{padding:18px 16px 22px;}
+.team-name{font-family:'Noto Sans KR','Noto Sans JP',sans-serif;font-size:16px;font-weight:900;color:var(--gold);margin-bottom:6px;letter-spacing:1px;}
+.team-role{font-size:13px;color:rgba(255,248,238,.65);line-height:1.55;font-weight:400;}
+.team-years{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(245,168,0,.15);color:var(--gold);border:1px solid rgba(245,168,0,.3);}
+
+/* CONTACT */
+#contact{background:var(--dark);text-align:center;padding:100px 24px;}
+.contact-logo{max-width:400px;margin:0 auto 32px;}
+.contact-logo img{width:100%;background:transparent;}
+.contact-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);color:var(--gold);margin-bottom:24px;letter-spacing:3px;line-height:1.3;}
+.contact-message{max-width:600px;margin:0 auto 48px;font-size:16px;color:rgba(255,248,238,.8);line-height:1.9;font-weight:400;}
+.contact-email{display:inline-block;background:var(--brown);border-radius:16px;padding:20px 40px;border-top:4px solid var(--gold);} .contact-closing{font-family:'Noto Sans KR',sans-serif;font-size:clamp(18px,2.5vw,26px);color:var(--gold);font-weight:700;letter-spacing:1px;margin-top:16px;}
+.contact-email a{color:var(--gold);text-decoration:none;font-size:16px;font-weight:700;}
+.confidential{margin-top:60px;font-size:11px;letter-spacing:3px;color:rgba(255,248,238,.3);}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:99999;align-items:center;justify-content:center;padding:20px;}
+.lightbox.active{display:flex;}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:12px;background:transparent;}
+.lightbox-close{position:absolute;top:20px;right:28px;font-size:36px;color:white;cursor:pointer;font-weight:300;line-height:1;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .ip-stats{grid-template-columns:1fr 1fr;}
+  .ip-evidence{grid-template-columns:1fr;}
+  .story-grid{grid-template-columns:1fr;}
+  .features-grid{grid-template-columns:1fr 1fr;}
+  .char-grid{grid-template-columns:1fr;}
+  .screens-masonry{grid-template-columns:1fr 1fr;}
+  .screen-item.wide{grid-column:span 1;}
+  .coop-screens{grid-template-columns:1fr;}
+  .gimmick-list{grid-template-columns:1fr;}
+  .refs-grid{grid-template-columns:1fr;}
+  .roadmap-steps{grid-template-columns:1fr 1fr;}
+  .roadmap-line{display:none;}
+  .team-grid{grid-template-columns:1fr 1fr;}
+}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">×</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en');toggleYoutube('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('kr');toggleYoutube('kr')">KR</button>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="nintendo-logos fade-in">
+    <img src="images/Switch_01.png" alt="Nintendo Switch" onerror="this.style.display='none'">
+    <img src="images/Switch_02.png" alt="Nintendo Switch 2" onerror="this.style.display='none'">
+  </div>
+  <div class="hero-title-img" id="heroTitleWrap" style="opacity:1;">
+    <img src="images/title_EN.png" id="hero-title-en" style="width:100%;display:block;border-radius:16px;" alt="Wacky Deer&Munk Adventure">
+    <img src="images/title_JP.png" id="hero-title-jp" style="width:100%;display:none;border-radius:16px;" alt="ドタバタ！ゴーディアとダチップの大冒険">
+    <img src="images/title_KR.png" id="hero-title-kr" style="width:100%;display:none;border-radius:16px;" alt="우당탕탕 고라니와 다람쥐의 대모험">
+  </div>
+  <div class="hero-main fade-in" data-en="Fun solo.<br>Better with two." data-kr="혼자도 재밌고,<br>둘이면 더 재밌다.">Fun solo.<br>Better with two.</div>
+  <div class="hero-sub fade-in" data-en="A 2D co-op platformer — solo or local co-op on one device." data-kr="2D 협동 플랫포머 — 혼자 또는 한 기기에서 둘이 함께.">A 2D co-op platformer — solo or local co-op on one device.</div>
+  <div class="hero-divider"></div>
+  <div class="hero-meta fade-in">IDIOCRACY, INC. · 2026</div>
+  <div class="readiness-badge fade-in">
+    🎮 <span data-en="Nintendo Switch™ NOW LIVE · Steam Coming September 2026" data-kr="닌텐도 스위치™ 출시 완료 · 스팀 2026년 9월 출시 예정">Nintendo Switch™ 출시 완료 · 스팀 2026년 9월 출시 예정</span>
+  </div>
+  <div class="scroll-hint">▼ scroll</div>
+</div>
+
+
+<div class="divider"></div>
+
+<!-- GAMEPLAY PREVIEW -->
+<section id="gameplay-preview" style="padding:60px 24px;max-width:900px;margin:0 auto;text-align:center;">
+  <div class="fade-in">
+    <p class="section-label" style="text-align:center;" data-en="GAMEPLAY PREVIEW" data-kr="게임플레이 프리뷰" data-jp="ゲームプレイプレビュー">ゲームプレイプレビュー</p>
+  </div>
+  <div class="fade-in" style="margin-top:32px;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:16/9;">
+    <iframe id="yt-jp" src="https://www.youtube.com/embed/M-s4GpeUY2Y" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:16px;opacity:1;transition:opacity 0.3s;" allowfullscreen></iframe>
+    <iframe id="yt-en" src="https://www.youtube.com/embed/Wk2hCsb39qs" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:16px;opacity:0;pointer-events:none;transition:opacity 0.3s;" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="fade-in">
+    <p class="section-label" data-en="PROLOGUE" data-kr="프롤로그" data-jp="プロローグ">プロローグ</p>
+    <h2 class="section-title" data-en="THE ADVENTURE BEGINS" data-kr="모험의 시작" data-jp="冒険のはじまり">冒険のはじまり</h2>
+  </div>
+  <div class="story-grid fade-in">
+    <div class="story-img"><img src="images/1_1.png" alt="Story 1"></div>
+    <div class="story-img"><img src="images/1_2.png" alt="Story 2"></div>
+    <div class="story-quote-block">
+      <div class="story-quote-mark">"</div>
+      <div class="story-quote-mark-end" style="font-family:'Noto Serif KR',serif;font-size:80px;color:rgba(245,168,0,.15);line-height:0.8;position:absolute;bottom:8px;right:20px;">"</div>
+      <p class="story-quote-text"
+         data-en='"The minions of the Pig King have invaded the peaceful squirrel village, stealing every last acorn the squirrels had gathered. The bravest squirrel in the village sets out on a journey to a distant land — alongside a new companion, the deer — to reclaim the acorns stolen by the pigs."'
+         data-kr='"돼지왕의 부하들이 평화로운 다람쥐 마을로 쳐들어와, 다람쥐들이 모아둔 도토리를 모조리 빼앗아 갔습니다. 마을의 다람쥐들 중 가장 용기있던 다람쥐 한 마리가 돼지들로부터 빼앗긴 도토리를 되찾기 위해 새로운 동료 고라니와 함께 머나먼 곳으로 여행을 떠납니다."'
+         data-jp="豚王の手下たちが、平和なリスの村に攻め込み、リスたちが集めたどんぐりをすべて奪い去ってしまいました。村で最も勇敢なリスであるダチップは、奪われたどんぐりを取り戻すため新たな仲間ゴーディアとともに遠い旅へと出発します。">豚王の手下たちが、平和なリスの村に攻め込み、リスたちが集めたどんぐりをすべて奪い去ってしまいました。村で最も勇敢なリスであるダチップは、奪われたどんぐりを取り戻すため新たな仲間ゴーディアとともに遠い旅へと出発します。</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="fade-in">
+    <p class="section-label" data-en="GAME FEATURES" data-kr="게임 특징" data-jp="ゲームの特徴">ゲームの特徴</p>
+    <h2 class="section-title" data-en="WHY IT WORKS" data-kr="왜 재미있는가" data-jp="なぜ面白いのか">なぜ面白いのか</h2>
+  </div>
+  <div class="features-grid fade-in">
+    <div class="feature-card">
+      <div class="feature-num">2</div>
+      <div class="feature-title" data-en="Each Role Matters" data-kr="각자의 역할이 필요한 콤비" data-jp="それぞれの役割が光るコンビ">それぞれの役割が必要なコンビ</div>
+      <div class="feature-desc" data-en="GO-rani: Dash, High Jump, Move Objects, Use Weapons. DA-munk: Double Jump, Glide, Narrow Passages. Neither can clear the stage alone." data-kr="고라니: 대시, 높은 점프, 오브젝트 이동, 무기 사용. 다람쥐: 2단 점프, 활강, 좁은 통로 통과. 둘 다 없으면 스테이지를 깰 수 없다." data-jp="ゴーディア：ダッシュ、高ジャンプ、オブジェクト移動、武器使用。ダチップ：二段ジャンプ、滑空、狭い通路。どちらが欠けてもクリアできません。">ゴーラニ：ダッシュ、高ジャンプ、オブジェクト移動、武器使用。ダチップ：二段ジャンプ、滑空、狭い通路。どちらもいないとクリアできない。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">200</div>
+      <div class="feature-title" data-en="Stages · 10 Themes" data-kr="스테이지 · 10개 테마" data-jp="プレイタイムたっぷり！<br>ボリューム満点の10ワールド！">ステージ · 10テーマ</div>
+      <div class="feature-desc" data-en="Rich single-player content across 10 diverse worlds with progressive difficulty." data-kr="점진적 난이도의 10개 다양한 월드에 걸친 풍부한 싱글플레이 콘텐츠." data-jp="段階的な難易度の10種類のワールドにわたるシングルプレイコンテンツ。">段階的な難易度の10種類のワールドにわたるシングルプレイコンテンツ。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">2P</div>
+      <div class="feature-title" data-en="True Local Co-op" data-kr="진정한 로컬 코옵" data-jp="Nintendo Switch™だからこそできるプレイ体験">真のローカル協力プレイ</div>
+      <div class="feature-desc" data-en="Built from scratch for two players. Special co-op stages require simultaneous Joy-Con™ input, synchronized direction, real teamwork." data-kr="처음부터 2인용으로 설계. 특정 협동 구간에서는 동시 조이콘 입력, 방향키 동기화 등 진짜 협업이 필요하다." data-jp="最初から2人用として設計。特定の協力区間では、同時Joy-Con™入力や方向キーの同期など、本物のチームワークが問われます。">最初から2人用に設計。特定の区間では同時Joy-Con™入力、方向キー同期など真のチームワークが必要。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">200+</div>
+      <div class="feature-title" data-en="Collectible Costumes" data-kr="수집형 코스튬" data-jp="コスチュームコレクション">収集コスチューム</div>
+      <div class="feature-desc" data-en="Head, Face, Outfit, Dance customization. Hundreds of unlockable items." data-kr="머리, 얼굴, 의상, 댄스 커스터마이징. 수백 개의 언락 가능한 아이템." data-jp="頭・顔・衣装・ダンスをカスタマイズ。アンロックできるアイテムは数百種類。">頭、顔、衣装、ダンスカスタマイズ。何百ものアンロック可能なアイテム。</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CHARACTERS -->
+<section id="characters">
+  <div class="fade-in">
+    <p class="section-label" data-en="THE DUO" data-kr="두 캐릭터" data-jp="二人のキャラクター">二人のキャラクター</p>
+    <h2 class="section-title" data-en="MEET THE DUO" data-kr="두 주인공을 만나다" data-jp="二人のキャラクターに会おう">二人のキャラクターに会おう</h2>
+    <p class="section-sub" data-en="Neither can do it alone. That's the whole point." data-kr="혼자서는 안 된다. 그게 전부다." data-jp="どちらも一人の力ではクリアできない。ひとりプレイでは交代しながら、<br>ふたりプレイでは力を合わせて前へ進もう！">どちらも一人の力ではクリアできない。ひとりプレイでは交代しながら、<br>ふたりプレイでは力を合わせて前へ進もう！</p>
+  </div>
+  <div class="char-grid fade-in">
+    <div class="char-card">
+      <div class="char-header">
+        <div class="char-profile"><img src="images/Profile_Deer.png" alt="GO-rani"></div>
+        <div>
+          <div class="char-name" data-en="GO-DEER" data-kr="GO-RANI" data-jp="ゴーディア">GO-RANI</div>
+          <div class="char-type" data-en="⚡ POWER TYPE" data-kr="⚡ 파워형" data-jp="⚡ パワータイプ">⚡ パワータイプ</div>
+        </div>
+      </div>
+      <div class="char-screenshots">
+        <div>
+          <div class="char-shot" onclick="openLightbox('images/Skill_dash.png')"><img src="images/Skill_dash.png" alt="대시"></div>
+          <div class="char-shot-label" data-en="Dash" data-kr="대시" data-jp="ダッシュ">ダッシュ</div>
+        </div>
+        <div>
+          <div class="char-shot" onclick="openLightbox('images/Skill_highjump.png')"><img src="images/Skill_highjump.png" alt="높은 점프"></div>
+          <div class="char-shot-label" data-en="High Jump" data-kr="높은 점프" data-jp="高ジャンプ">高ジャンプ</div>
+        </div>
+        <div>
+          <div class="char-shot" onclick="openLightbox('images/Skill_lift.png')"><img src="images/Skill_lift.png" alt="상자 나르기"></div>
+          <div class="char-shot-label" data-en="Lift Objects" data-kr="오브젝트 들기" data-jp="持ち上げ">持ち上げ</div>
+        </div>
+      </div>
+      <div class="char-gifs">
+        <div class="char-gif-item"><img src="images/go_ce1.gif" alt="GO-rani 1"></div>
+        <div class="char-gif-item"><img src="images/go_ce2.gif" alt="GO-rani 2"></div>
+        <div class="char-gif-item"><img src="images/go_ce3.gif" alt="GO-rani 3"></div>
+        <div class="char-gif-item"><img src="images/go_ce4.gif" alt="GO-rani 4"></div>
+        <div class="char-gif-item"><img src="images/go_ce5.gif" alt="GO-rani 5"></div>
+      </div>
+      <div class="char-abilities" data-en="Dash · High Jump · Move & Lift Objects · Use Weapons" data-kr="대시 돌파 · 높은 점프 · 오브젝트 들어서 이동 · 무기 사용" data-jp="ダッシュ突破 · 高ジャンプ · オブジェクト持ち上げ＆移動 · 武器使用">ダッシュ突破 · 高ジャンプ · オブジェクト持ち上げ · 武器使用</div>
+    </div>
+    <div class="char-card">
+      <div class="char-header">
+        <div class="char-profile"><img src="images/Profile_munk.png" alt="DA-munk"></div>
+        <div>
+          <div class="char-name" data-en="DA-MUNK" data-kr="DA-MUNK" data-jp="ダチップ">DA-MUNK</div>
+          <div class="char-type" data-en="🌀 AGILITY TYPE" data-kr="🌀 민첩형" data-jp="🌀 テクニックタイプ">🌀 アジリティタイプ</div>
+        </div>
+      </div>
+      <div class="char-screenshots">
+        <div>
+          <div class="char-shot" onclick="openLightbox('images/Skill_doublejump.png')"><img src="images/Skill_doublejump.png" alt="이단 점프"></div>
+          <div class="char-shot-label" data-en="Double Jump" data-kr="2단 점프" data-jp="二段ジャンプ">二段ジャンプ</div>
+        </div>
+        <div>
+          <div class="char-shot" onclick="openLightbox('images/Skill_glide.png')"><img src="images/Skill_glide.png" alt="활강"></div>
+          <div class="char-shot-label" data-en="Glide" data-kr="활강" data-jp="滑空">滑空</div>
+        </div>
+        <div>
+          <div class="char-shot" onclick="openLightbox('images/Skill_narrow.png')"><img src="images/Skill_narrow.png" alt="좁은 통로"></div>
+          <div class="char-shot-label" data-en="Narrow Passage" data-kr="좁은 통로" data-jp="狭い通路">狭い通路</div>
+        </div>
+      </div>
+      <div class="char-gifs">
+        <div class="char-gif-item"><img src="images/da_ce1.gif" alt="DA-munk 1"></div>
+        <div class="char-gif-item"><img src="images/da_ce2.gif" alt="DA-munk 2"></div>
+        <div class="char-gif-item"><img src="images/da_ce3.gif" alt="DA-munk 3"></div>
+        <div class="char-gif-item"><img src="images/da_ce4.gif" alt="DA-munk 4"></div>
+        <div class="char-gif-item"><img src="images/da_ce5.gif" alt="DA-munk 5"></div>
+      </div>
+      <div class="char-abilities" data-en="Double Jump · Glide long distances · Pass through narrow passages only DA-munk can fit" data-kr="2단 점프 · 긴 거리 활강 · 다람쥐만 통과 가능한 좁은 통로 이동" data-jp="二段ジャンプ · 長距離滑空 · ダチップだけが通れる狭い通路">二段ジャンプ · 長距離滑空 · ダチップだけが通れる狭い通路</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SCREENSHOTS -->
+<section id="screenshots">
+  <div class="fade-in">
+    <p class="section-label" data-en="SCREENSHOTS" data-kr="스크린샷" data-jp="スクリーンショット">スクリーンショット</p>
+    <h2 class="section-title" data-en="SEE IT IN ACTION" data-kr="실제 플레이를 보다" data-jp="ヘタウマなキャラクターたちの<br>実際のゲームプレイシーン！">実際のプレイを見る</h2>
+  </div>
+  <div class="screenshot-slider-wrap fade-in">
+    <div class="screenshot-slider" id="screenshotSlider">
+    <div class="slide-item" onclick="openLightbox('images/Single_Munk02.png')">
+      <img src="images/Single_Munk02.png" alt="다람쥐 · 싱글 플레이">
+      <div class="slide-caption" data-en="Munk · Single Play" data-kr="다람쥐 · 싱글 플레이" data-jp="ダチップ · シングルプレイ">ダチップ · シングルプレイ</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Single_Munk03.png')">
+      <img src="images/Single_Munk03.png" alt="다람쥐 · 싱글 플레이 2">
+      <div class="slide-caption" data-en="Munk · Single Play 2" data-kr="다람쥐 · 싱글 플레이 2" data-jp="ダチップ · シングルプレイ 2">ダチップ · シングルプレイ 2</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Single_Deer01.png')">
+      <img src="images/Single_Deer01.png" alt="고라니 · 싱글 플레이">
+      <div class="slide-caption" data-en="Deer · Single Play" data-kr="고라니 · 싱글 플레이" data-jp="ゴーディア · シングルプレイ">ゴーディア · シングルプレイ</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Single_Deer02.png')">
+      <img src="images/Single_Deer02.png" alt="고라니 · 싱글 플레이 2">
+      <div class="slide-caption" data-en="Deer · Single Play 2" data-kr="고라니 · 싱글 플레이 2" data-jp="ゴーディア · シングルプレイ 2">ゴーディア · シングルプレイ 2</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Co-op04.png')">
+      <img src="images/Co-op04.png" alt="협동 플레이">
+      <div class="slide-caption" data-en="Co-op Play" data-kr="협동 플레이" data-jp="協力プレイ">協力プレイ</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Co-op05.png')">
+      <img src="images/Co-op05.png" alt="협동 플레이 2">
+      <div class="slide-caption" data-en="Co-op Play 2" data-kr="협동 플레이 2" data-jp="協力プレイ 2">協力プレイ 2</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Co-op_final.png')">
+      <img src="images/Co-op_final.png" alt="Co-op 클리어 세레모니">
+      <div class="slide-caption" data-en="Co-op Clear Ceremony" data-kr="협동 클리어 세레모니" data-jp="協力クリアセレモニー">協力クリアセレモニー</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Weapon_02.png')">
+      <img src="images/Weapon_02.png" alt="무기">
+      <div class="slide-caption" data-en="Weapon" data-kr="무기" data-jp="武器">武器</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Boss_01_fix.png')">
+      <img src="images/Boss_01_fix.png" alt="보스전">
+      <div class="slide-caption" data-en="Boss Battle" data-kr="보스전" data-jp="ボス戦">ボス戦</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Boss_02_fix.png')">
+      <img src="images/Boss_02_fix.png" alt="보스전 2">
+      <div class="slide-caption" data-en="Boss Battle 2" data-kr="보스전 2" data-jp="ボス戦 2">ボス戦 2</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Boss_03_fix.png')">
+      <img src="images/Boss_03_fix.png" alt="보스전 3">
+      <div class="slide-caption" data-en="Boss Battle 3" data-kr="보스전 3" data-jp="ボス戦 3">ボス戦 3</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Item-Purchase.png')">
+      <img data-en-src="images/Item-Purchase.png" data-jp-src="images/Item-Purchase_JP.png" src="images/Item-Purchase.png" alt="아이템 구매">
+      <div class="slide-caption" data-en="Item Shop" data-kr="아이템 구매" data-jp="アイテム購入">アイテム購入</div>
+    </div>
+    <div class="slide-item" onclick="openLightbox('images/Costomize.png')">
+      <img data-en-src="images/Costomize.png" data-jp-src="images/Costomize_JP.png" src="images/Costomize.png" alt="커스터마이즈">
+      <div class="slide-caption" data-en="Customize" data-kr="커스터마이즈" data-jp="カスタマイズ">カスタマイズ</div>
+    </div>
+    </div>
+    <button class="slider-btn prev" onclick="moveSlide(-1)">&#8249;</button>
+    <button class="slider-btn next" onclick="moveSlide(1)">&#8250;</button>
+  </div>
+  <div class="slider-dots" id="sliderDots">
+    <button class="slider-dot active" onclick="goSlide(0)"></button>
+    <button class="slider-dot " onclick="goSlide(1)"></button>
+    <button class="slider-dot " onclick="goSlide(2)"></button>
+    <button class="slider-dot " onclick="goSlide(3)"></button>
+    <button class="slider-dot " onclick="goSlide(4)"></button>
+    <button class="slider-dot " onclick="goSlide(5)"></button>
+    <button class="slider-dot " onclick="goSlide(6)"></button>
+    <button class="slider-dot " onclick="goSlide(7)"></button>
+    <button class="slider-dot " onclick="goSlide(8)"></button>
+    <button class="slider-dot " onclick="goSlide(9)"></button>
+    <button class="slider-dot " onclick="goSlide(10)"></button>
+    <button class="slider-dot " onclick="goSlide(11)"></button>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CO-OP -->
+<section id="coop">
+  <div class="fade-in">
+    <p class="section-label" data-en="CO-OP FEATURE" data-kr="코옵 피처" data-jp="協力プレイの特徴">協力プレイの特徴</p>
+    <div class="coop-slogan">
+      <span data-en="You can't go alone." data-kr="혼자선 못 간다." data-jp="一人じゃ行けない。">一人じゃ行けない。</span><br>
+      <span style="color:var(--gold)" data-en="Together, you go." data-kr="둘이서 간다." data-jp="二人だから行ける!">二人で行こう。</span>
+    </div>
+  </div>
+  <div class="coop-screens fade-in">
+    <div class="coop-screen" onclick="openLightbox('images/Coop_01.png')">
+      <img src="images/Coop_01.png" alt="Co-op 1">
+    </div>
+    <div class="coop-screen" onclick="openLightbox('images/Coop_02.png')">
+      <img src="images/Coop_02.png" alt="Co-op 2">
+    </div>
+    <div class="coop-screen" onclick="openLightbox('images/Coop_03.png')">
+      <img src="images/Coop_03.png" alt="Co-op 3">
+    </div>
+  </div>
+  <div class="gimmick-list fade-in">
+    <div class="gimmick">
+      <div class="gimmick-name" data-en="SEESAW" data-kr="시소" data-jp="シーソー">シーソー</div>
+      <div class="gimmick-desc" data-en="Move your Joy-Con™ in the right direction. Only together do you move forward." data-kr="조이콘 방향대로 움직여라. 둘이 맞춰야 앞으로 간다." data-jp="Joy-Con™の方向に合わせて動け。<br>二人が息を合わせてこそ、前へ進めます。">Joy-Con™の方向通りに動け。二人が合わせてこそ前に進める。</div>
+    </div>
+    <div class="gimmick">
+      <div class="gimmick-name" data-en="LIFT &amp; JUMP" data-kr="들어올리기 &amp; 점프" data-jp="持ち上げ＆ジャンプ">持ち上げ＆ジャンプ</div>
+      <div class="gimmick-desc" data-en="Cut together. Only then does the path open." data-kr="같이 잘라야 길이 생긴다." data-jp="二人で切り開いてこそ、<br>道が生まれます。">一緒に切ってこそ、道が開ける。</div>
+    </div>
+    <div class="gimmick">
+      <div class="gimmick-name" data-en="SYNC INPUT" data-kr="동시 입력" data-jp="同時入力">同時入力</div>
+      <div class="gimmick-desc" data-en="The moment you join hands, the adventure is complete." data-kr="손을 맞잡는 그 순간, 모험이 완성된다." data-jp="ふたりが協力するその瞬間、<br>冒険の道は続きます。">手を合わせるその瞬間、冒険が完成する。</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REFERENCES -->
+<section id="references">
+  <div class="fade-in">
+    <p class="section-label" data-en="REFERENCES" data-kr="레퍼런스" data-jp="参考作品">参考作品</p>
+    <h2 class="section-title" data-en="GAMES THAT INSPIRED US" data-kr="우리에게 영감을 준 게임들" data-jp="私たちにインスピレーションを<br>与えたゲームたち">私たちにインスピレーションを与えたゲーム</h2>
+    <p class="ref-intro" style="font-weight:700;color:#ffffff;">
+      <span style="color:#ffff00;font-weight:900" data-en="Rayman" data-kr="레이맨" data-jp="レイマン">レイマン</span><span style="color:#ffffff;font-weight:700" data-en="'s co-op" data-kr="의 협동" data-jp="の協力プレイ">の協力</span>, <span style="color:#ffff00;font-weight:900" data-en="Super Mario" data-kr="슈퍼마리오" data-jp="スーパーマリオ">マリオ</span><span style="color:#ffffff;font-weight:700" data-en="'s joy and heart" data-kr="의 즐거움과 감성" data-jp="の楽しさと温かさ">の楽しさと感性</span>, <span style="color:#ffff00;font-weight:900" data-en="Ori" data-kr="오리" data-jp="オリ">オリ</span><span style="color:#ffffff;font-weight:700" data-en="'s puzzles" data-kr="의 퍼즐" data-jp="のパズル">のパズル</span><span style="color:#ffffff;font-weight:700" data-en=" — these three games inspired " data-kr="이 세 게임이 " data-jp="、この3つのゲームが<br>">、この3つのゲームが<br></span><span data-en="Wacky! Deer&amp;Munk Adventure" data-kr="Wacky! Deer&amp;Munk Adventure" data-jp="ドタバタ！ゴーディアとダチップの大冒険"><strong>Wacky! Deer&amp;Munk Adventure</strong></span><span style="color:#ffffff;font-weight:700" data-en="." data-kr="에 영감을 줬다." data-jp="にインスピレーションを与えました。">にインスピレーションを与えました。</span>
+    </p>
+  </div>
+  <div class="refs-grid fade-in">
+    <div class="ref-card" style="border-color:#4A90D9">
+      <img class="ref-img" src="images/Rayman_Legend.png" alt="Rayman Legends">
+      <div class="ref-info">
+        <div class="ref-title">Rayman Legends</div>
+        <div class="ref-tag" data-en="Co-op Design & Level Variety" data-kr="코옵 설계 & 레벨 다양성" data-jp="協力プレイデザイン＆レベルの多様性">協力プレイデザイン＆レベルの多様性</div>
+      </div>
+    </div>
+    <div class="ref-card" style="border-color:#E84040">
+      <img class="ref-img" src="images/New_super_mario_bros.png" alt="New Super Mario Bros.">
+      <div class="ref-info">
+        <div class="ref-title">New Super Mario Bros.</div>
+        <div class="ref-tag" data-en="Family Friendly Fun" data-kr="누구나 즐길 수 있는 플랫포머" data-jp="誰でも楽しめるプラットフォーマー">誰でも楽しめるプラットフォーム</div>
+      </div>
+    </div>
+    <div class="ref-card" style="border-color:#74C9E5">
+      <img class="ref-img" src="images/Ori-and-the-Blind-Forest.png" alt="Ori and the Blind Forest">
+      <div class="ref-info">
+        <div class="ref-title">Ori and the Blind Forest</div>
+        <div class="ref-tag" data-en="Action-based Puzzle Mechanics" data-kr="액션 기반 퍼즐 메커닉" data-jp="アクションベースのパズル演出">アクションベースのパズル演出</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- IP SECTION -->
+<section id="ip-section">
+  <div class="fade-in">
+    <p class="section-label" data-en="LICENSED IP — WHY THIS WILL SUCCEED" data-kr="라이선스 IP — 왜 성공할 수밖에 없는가" data-jp="ライセンスIP — なぜ成功するのか">ライセンスIP — なぜ成功するのか</p>
+    <h2 class="section-title" data-en="BUILT ON A PROVEN IP" data-kr="검증된 IP 위에 세워진 게임" data-jp="実績あるIPから生まれたゲーム">実績あるIPで構築されたゲーム</h2>
+  </div>
+  <div class="ip-hero-box fade-in">
+    <div class="gorani-corner"><img src="images/KAKAO_2.png" alt="GO라니와 DA람쥐"></div>
+    <div class="ip-title" data-en="GO-rani: Korea's Top KakaoTalk Emoticon IP" data-kr="GO라니: 대한민국 대표 카카오톡 이모티콘 IP" data-jp="ゴーディア：韓国トップのKakaoTalkスタンプIP">GO라니：韓国トップのKakaoTalk絵文字IP</div>
+    <p class="ip-desc" data-en="GO-rani is not a new character. It's a battle-tested IP with millions of fans on KakaoTalk — Korea's national messaging app used by 98.9% of the population. In November 2025, Kakao officially selected GO-rani as one of the year's most popular emoticons for the 14th Anniversary." data-kr="GO라니는 신규 캐릭터가 아닙니다. 대한민국 국민 98.9%가 사용하는 카카오톡에서 수백만 팬을 보유한 검증된 IP입니다. 2025년 11월 카카오 이모티콘 14주년 행사에서 GO라니는 '망그러진 곰', '가나디' 등 최상위 IP와 나란히 올해의 공식 인기 이모티콘으로 선정됐습니다." data-jp="ゴーディアは、新しいキャラクターではありません。韓国国民の98.9%が使用するKakaoTalkで、何百万ものファンを持つ実証済みのIPです。2025年11月のカカオスタンプ14周年記念イベントでは、人気キャラクター「フリズルドベア」「カナディ」などの最上位IPと並んで、年間公式人気スタンプに選出されました。">GO라니は新しいキャラクターではありません。韓国国民の98.9%が使用するKakaoTalkで何百万ものファンを持つ実証済みIPです。2025年11月のカカオ絵文字14周年でGO라니は最上位IPと並んで公式人気絵文字に選出されました。</p>
+    <div class="kakao-badge">
+      <svg class="kakao-svg" viewBox="0 0 24 24" fill="#3C1E1E"><path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.604 1.554 4.9 3.938 6.318L4.5 21l4.688-2.344A11.64 11.64 0 0012 19c5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/></svg>
+      <span data-en="Official KakaoTalk IP · 2025 Top Emoticon — Kakao 14th Anniversary" data-kr="카카오톡 공식 IP · 2025년 인기 이모티콘 선정 — 카카오 14주년" data-jp="KakaoTalk公式IP · 2025年人気スタンプ選出 — カカオ14周年">カカオトーク公式IP · 2025年人気絵文字選出 — カカオ14周年</span>
+    </div>
+  </div>
+
+  <div class="ip-stats fade-in">
+    <div class="ip-stat"><div class="ip-stat-num">98.9%</div><div class="ip-stat-label" data-en="KakaoTalk usage rate in Korea<br>(Korea Press Foundation 2024)" data-kr="대한민국 카카오톡 이용률 (한국언론진흥재단 2024)" data-jp="韓国KakaoTalk利用率<br>（韓国言論振興財団 2024）">韓国KakaoTalk利用率 (韓国言論振興財団 2024)<br>(한국언론진흥재단 2024)</div></div>
+    <div class="ip-stat"><div class="ip-stat-num" data-en="300B+ sends" data-kr="3,000억" data-jp="3,000億回">3,000億回</div><div class="ip-stat-label" data-en="Kakao emoticon total<br>messages sent (Kakao Official 2025)" data-kr="카카오 이모티콘 누적 발신량 (카카오 공식 2025)" data-jp="カカオスタンプ累計送信数<br>（カカオ公式 2025）">カカオ絵文字累計送信数 (カカオ公式 2025)<br>(카카오 공식 2025)</div></div>
+    <div class="ip-stat"><div class="ip-stat-num">TOP</div><div class="ip-stat-label" data-en="2025 Official Popular Emoticon<br>— Kakao 14th Anniversary" data-kr="2025 카카오 14주년 공식 인기 이모티콘 선정" data-jp="2025年 カカオ14周年 公式<br>人気スタンプ選出">2025年カカオ14周年 公式人気絵文字選出<br>공식 인기 이모티콘 선정</div></div>
+    <div class="ip-stat"><div class="ip-stat-num">52%</div><div class="ip-stat-label" data-en="Nintendo Switch™ female owners<br>highest among all consoles<br>(Circana 2023)" data-kr="닌텐도 스위치 여성 소유 비율 — 전 콘솔 중 1위 (Circana 2023)" data-jp="Nintendo Switch™ 女性所有率<br>全コンソール中第1位（Circana 2023）">Nintendo Switch女性所有率 — 全コンソール中1位 (Circana 2023)<br>전 콘솔 중 1위 (Circana 2023)</div></div>
+  </div>
+
+  <div class="ip-evidence fade-in">
+    <div class="evidence-card gold">
+      <img class="evidence-img" src="images/IP_01.png" alt="카카오 14주년">
+      <div class="evidence-body">
+        <div class="evidence-title" data-en="Kakao 14th Anniversary Top Emoticon (Nov 2025)" data-kr="카카오 14주년 공식 인기 이모티콘 선정 (2025년 11월)" data-jp="カカオ14周年 公式人気スタンプ（2025年11月）">カカオ14周年 公式人気絵文字 (2025年11月)</div>
+        <div class="evidence-desc" data-en="Kakao officially named GO-rani among the most popular emoticons of 2025 — alongside Frizzled Bear, Ganadi, and other tier-1 IPs." data-kr="카카오는 GO라니를 2025년 가장 인기 있는 이모티콘 중 하나로 공식 선정. 망그러진 곰, 가나디 등 1티어 IP와 나란히 선정됐습니다." data-jp="Kakaoは2025年、ゴーディアを年間最も人気のあるスタンプのひとつとして公式選出。「フリズルドベア」「カナディ」など最上位IPと肩を並べての受賞です。">KakaoはGO라니を2025年の最も人気のある絵文字として公式選出。망그러진 곰、가나디など1線級IPと並んでいます。</div>
+        <a class="evidence-link" href="https://www.kakaocorp.com/page/detail/11818" target="_blank" data-en="Source: Kakao Official Press Release →" data-kr="출처: 카카오 공식 보도자료 →" data-jp="出典：カカオ公式プレスリリース →">出典：カカオ公式プレスリリース →</a>
+      </div>
+    </div>
+    <div class="evidence-card orange">
+      <img class="evidence-img" src="images/IP_02.png" alt="카카오 웹툰">
+      <div class="evidence-body">
+        <div class="evidence-title" data-en="Kakao Webtoon Simultaneous Launch (Dec 25, 2025)" data-kr="카카오 웹툰 동시 연재 런칭 (2025.12.25)" data-jp="カカオウェブトゥーン同時連載開始（2025年12月25日）">カカオウェブトゥーン同時連載 (2025年12月25日)</div>
+        <div class="evidence-desc" data-en="GO-rani launched on Kakao Webtoon on Christmas 2025. Emoticon + Webtoon + Game — full IP ecosystem before the game even launches." data-kr="GO라니는 2025년 크리스마스에 카카오 웹툰 연재 시작. 이모티콘 + 웹툰 + 게임으로 이어지는 완전한 IP 생태계." data-jp="ゴーディアは2025年クリスマスにカカオウェブトゥーンで連載スタート。スタンプ＋ウェブトゥーン＋ゲームによる完全なIPエコシステムが誕生しました。">GO라니は2025年クリスマスにカカオウェブトゥーンで連載開始。絵文字+ウェブトゥーン+ゲームの完全なIPエコシステム。</div>
+        <a class="evidence-link" href="https://page.kakao.com/content/68299455" target="_blank" data-en="Kakao Webtoon GO-rani →" data-kr="카카오페이지 GO라니 웹툰 →" data-jp="カカオウェブトゥーン GO-rani →">カカオウェブトゥーン GO-rani →</a>
+      </div>
+    </div>
+    <div class="evidence-card green">
+      <img class="evidence-img" src="images/IP_03.png" alt="IDIOCRACY 실적">
+      <div class="evidence-body">
+        <div class="evidence-title" data-en="IDIOCRACY's Journey" data-kr="IDIOCRACY의 발자취" data-jp="マルチプラットフォーム開発力 — IDIOCRACY実績">IDIOCRACYの歩み</div>
+        <div class="evidence-desc" data-en="13 years across console, PC, mobile, web, and HTML5 — 20+ titles, millions of users. We know how to build games players actually play." data-kr="콘솔, PC, 모바일, 웹, HTML5 등 다양한 플랫폼에서 13년 개발 경력, 20개 이상의 타이틀, 수백만 이상의 유저. 플레이어가 실제로 플레이하는 게임을 만드는 방법을 알고 있습니다." data-jp="コンソール・PC・モバイル・ウェブ・HTML5など、あらゆるプラットフォームにまたがる13年の開発経歴。20以上のタイトル、数十万〜数百万人以上のユーザー。プレイヤーが夢中になるゲームを作ること、それが私たちの使命です。">コンソール、PC、モバイル、ウェブ、HTML5など多様なプラットフォームで13年の開発経験、20以上のタイトル、数百万以上のユーザー。プレイヤーが実際に遊ぶゲームの作り方を知っています。</div>
+      </div>
+    </div>
+    <div class="evidence-card kakao-color">
+      <div class="ip04-slider" id="ip04Slider">
+        <img class="evidence-img ip04-slide active" src="images/IP_04.png" alt="GO라니 팬베이스">
+        <img class="evidence-img ip04-slide" src="images/IP_04_goods.png" alt="GO라니 굿즈">
+        <img class="evidence-img ip04-slide" src="images/IP_04_popupstore.png" alt="GO라니 팝업스토어">
+        <div class="ip04-dots">
+          <span class="ip04-dot active" onclick="ip04Go(0)"></span>
+          <span class="ip04-dot" onclick="ip04Go(1)"></span>
+          <span class="ip04-dot" onclick="ip04Go(2)"></span>
+        </div>
+      </div>
+      <div class="evidence-body">
+        <div class="evidence-title" data-en="Target: Women 20-30s = Nintendo Switch™'s Core Demographic" data-kr="타겟: 20~30대 여성 = 닌텐도 스위치 핵심 구매층" data-jp="ターゲット：未就学児から小・中学生、そしてゲームが苦手なライトユーザー（女性ユーザーを含む）まで ＝ Nintendo Switch™ コア購買層">ターゲット：20〜30代女性 = Nintendo Switch™のコア購買層</div>
+        <div class="evidence-desc" data-en="GO-rani's fan base is concentrated in women in their 20s–30s — perfectly aligned with Nintendo Switch™'s #1 female ownership rate (52%). In 2025, Kakao Entertainment is aggressively expanding the IP with goods, pop-up stores, webtoons, and collaborations." data-kr="GO라니의 팬베이스는 <span class='highlight-yellow'>20~30대 여성</span>에 집중. 닌텐도 스위치 여성 소유 비율 1위(52%)와 정확히 일치합니다. 2025년 카카오엔터테인먼트는 굿즈, 팝업스토어, 웹툰, 콜라보 등 공격적인 IP 확장을 진행 중입니다." data-jp="ゴーディアのコアファン層である20〜30代女性は、Nintendo Switch™ユーザーの女性比率（52%）と完全に一致。既存のゲーマーはもちろん、新たな女性ファン層の獲得にも大きく貢献します。">ゴーディアのファンベースは20〜30代女性に集中。Nintendo Switch™の女性所有率第1位（52%）と完全に一致しています。2025年、カカオエンターテインメントはグッズ・ポップアップストア・ウェブトゥーン・コラボなど、積極的なIP拡大を推進中です。</div>
+        <div style="margin-top:10px;padding:6px 12px;background:rgba(0,180,80,0.15);border:1px solid rgba(0,200,80,0.4);border-radius:6px;display:inline-block;">
+          <span style="color:#00c850;font-size:12px;font-weight:700;" data-en="🔒 Kakao Entertainment Confidential — #1 Tier Emoticon IP for Women in their 20s–30s" data-kr="🔒 Kakao Entertainment Confidential — 20-30대 여성 1티어 이모티콘 IP" data-jp="🔒 Kakao Entertainment Confidential — 20〜30代女性ユーザーに人気を誇るトップクラスのスタンプIP">🔒 Kakao Entertainment Confidential — 20-30대 여성 1티어 이모티콘 IP</span>
+        </div>
+        <br>
+        <a class="evidence-link" href="https://nintendoeverything.com/52-of-switch-consoles-are-female-owned-in-the-u-s/" target="_blank" data-en="Source: Circana 2023 →" data-kr="출처: Circana 2023 →" data-jp="出典：Circana 2023 →">出典：Circana 2023 →</a>
+      </div>
+    </div>
+    <style>
+      .ip04-slider{position:relative;overflow:hidden;}
+      .ip04-slide{display:none;width:100%;border-radius:12px 12px 0 0;}
+      .ip04-slide.active{display:block;}
+      .ip04-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;}
+      .ip04-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:background 0.3s;}
+      .ip04-dot.active{background:#fff;}
+    </style>
+    <script>
+      var ip04Current = 0;
+      function ip04Go(n){
+        var slides = document.querySelectorAll('.ip04-slide');
+        var dots = document.querySelectorAll('.ip04-dot');
+        slides[ip04Current].classList.remove('active');
+        dots[ip04Current].classList.remove('active');
+        ip04Current = n;
+        slides[ip04Current].classList.add('active');
+        dots[ip04Current].classList.add('active');
+      }
+      setInterval(function(){ ip04Go((ip04Current+1) % 3); }, 3000);
+    </script>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="fade-in">
+    <p class="section-label" data-en="ROADMAP" data-kr="로드맵" data-jp="ロードマップ">ロードマップ</p>
+    <h2 class="section-title" data-en="WHERE WE STAND" data-kr="현재 우리의 위치" data-jp="現在地">現在地</h2>
+  </div>
+  <div class="roadmap-track fade-in">
+    <div class="roadmap-line"></div>
+    <div class="roadmap-steps">
+      <div class="rm-step">
+        <div class="rm-dot done">✓</div>
+        <div class="rm-badge-done" data-en="DONE" data-kr="완료" data-jp="完了">완료</div>
+        <div class="rm-title" data-en="GAME COMPLETE" data-kr="게임 완성" data-jp="ゲーム完成">ゲーム完成</div>
+        <div class="rm-sub" data-en="Core content complete" data-kr="핵심 콘텐츠 완성" data-jp="コアコンテンツ完成">コアコンテンツ完成</div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-dot done">✓</div>
+        <div class="rm-badge-done" data-en="DONE" data-kr="완료" data-jp="完了">완료</div>
+        <div class="rm-title" data-en="POLISHING &amp; QA" data-kr="폴리싱 및 QA" data-jp="ポリッシング＆QA">ポリッシング＆QA</div>
+        <div class="rm-sub" data-en="Co-op staging & quality up" data-kr="협동 연출 및 퀄리티 업" data-jp="協力演出＆品質向上">協力演出＆品質向上</div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-dot done">✓</div>
+        <div class="rm-badge-done" data-en="DONE" data-kr="완료" data-jp="完了">완료</div>
+        <div class="rm-title" data-en="LOCALIZATION" data-kr="로컬라이제이션" data-jp="ローカライゼーション">ローカライゼーション</div>
+        <div class="rm-sub">KR/EN/JP/ZH/TH<br>FR/IT/ES/DE/RU</div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-dot done">✓</div>
+        <div class="rm-badge-done" data-en="DONE" data-kr="완료" data-jp="完了">완료</div>
+        <div class="rm-title" data-en="LOT CHECK" data-kr="로트체크" data-jp="ロットチェック">ロットチェック</div>
+        <div class="rm-sub" data-en="NSP Submission" data-kr="nsp 제출" data-jp="nsp提出">nsp提出</div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-dot current">🚀</div>
+        <div class="rm-badge-now" data-en="LAUNCHED!" data-kr="출시 완료!">출시 완료!</div>
+        <div class="rm-title" data-en="LAUNCHED!" data-kr="정식 출시!">정식 출시!</div>
+        <div class="rm-sub" data-en="Nintendo Switch™ June 25, 2026" data-kr="닌텐도 스위치 2026.6.25">닌텐도 스위치 2026.6.25</div>
+      </div>
+      <div class="rm-step">
+        <div class="rm-dot future">🖥️</div>
+        <div class="rm-badge-done" style="background:#1a6bdc;" data-en="NEXT" data-kr="예정">예정</div>
+        <div class="rm-title" data-en="STEAM LAUNCH" data-kr="스팀 출시">스팀 출시</div>
+        <div class="rm-sub" data-en="September 2026" data-kr="2026년 9월">2026년 9월</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="fade-in">
+    <p class="section-label" data-en="THE TEAM" data-kr="개발팀" data-jp="開発チーム">開発チーム</p>
+    <h2 class="section-title">IDIOCRACY, INC.</h2>
+  </div>
+  <div class="company-intro-box fade-in">
+    <div class="company-intro-title" data-en="13 years of craft.<br>Now taking it global." data-kr="13년의 노하우.<br>이제 글로벌로.">13년의 노하우.<br>이제 글로벌로.</div>
+    <div class="company-intro-text">
+      <p data-en="Proven across diverse platforms for 13 years. Mobile, web, console — and now Steam. We build games people actually play." data-kr="13년간 다양한 플랫폼에서 증명해왔습니다. 모바일, 웹, 콘솔, 그리고 이제 스팀까지. 플레이어가 실제로 즐기는 게임을 만드는 것, 그게 우리의 일입니다.">13년간 다양한 플랫폼에서 증명해왔습니다. 모바일, 웹, 콘솔, 그리고 이제 스팀까지. 플레이어가 실제로 즐기는 게임을 만드는 것, 그게 우리의 일입니다.</p>
+    </div>
+    <div class="company-slogan-img">
+      <img src="images/Company_slogan.png" alt="IDIOCRACY Slogan" style="width:100%;max-width:600px;display:block;margin:20px auto 0;border-radius:8px;">
+    </div>
+  </div>
+  <div class="team-grid fade-in">
+    <div class="team-card">
+      <div class="team-avatar"><img src="images/Captain.png" alt="Captain"></div>
+      <div class="team-info">
+        <div class="team-name">Captain</div>
+        <div class="team-role" data-en="CEO · UI Design · Jack of All Trades" data-kr="대표이사 · UI 디자인 · 잡부" data-jp="CEO · UIデザイン · 何でも屋">CEO · UIデザイン · 何でも屋</div>
+        <span class="team-years">25+ yrs</span>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><img src="images/BoiledLemon.png" alt="BoiledLemon"></div>
+      <div class="team-info">
+        <div class="team-name">BoiledLemon</div>
+        <div class="team-role" data-en="Maps · Characters · Image Production" data-kr="맵 · 캐릭터 · 이미지 제작" data-jp="マップ · キャラ · ビジュアル制作">マップ · キャラクター · イメージ制作</div>
+        <span class="team-years">7+ yrs</span>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><img src="images/Mr_Choi.png" alt="Mr. Choi"></div>
+      <div class="team-info">
+        <div class="team-name">Mr. Choi</div>
+        <div class="team-role" data-en="Animation · Direction · Ideas" data-kr="애니메이션 · 연출 · 아이디어" data-jp="アニメーション · 演出 · アイデア">アニメーション · 演出 · アイデア</div>
+        <span class="team-years">25+ yrs</span>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar"><img src="images/MSKimg.png" alt="MSKim"></div>
+      <div class="team-info">
+        <div class="team-name">MSKim</div>
+        <div class="team-role" data-en="Programming · Skill Development" data-kr="프로그래밍 · 스킬 제작" data-jp="プログラミング · スキル制作">プログラミング · スキル制作</div>
+        <span class="team-years">7+ yrs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PARTNERSHIP -->
+<section id="partnership" style="background:#0F1E38;">
+  <div class="fade-in">
+    <p class="section-label" data-en="WHAT WE'RE LOOKING FOR" data-kr="우리가 찾는 것">우리가 찾는 것</p>
+    <h2 class="section-title" data-en="NOT A PITCH.<br>A QUESTION." data-kr="매달리는 게 아닙니다.<br>가능성을 묻는 겁니다.">매달리는 게 아닙니다.<br>가능성을 묻는 겁니다.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;">
+    <div class="fade-in" style="background:var(--brown);border-radius:20px;padding:36px;border-top:4px solid var(--gold);">
+      <div style="font-size:36px;margin-bottom:16px;">🎯</div>
+      <div style="font-size:16px;font-weight:700;color:var(--gold);margin-bottom:12px;" data-en="We want your honest evaluation." data-kr="솔직한 평가를 원합니다.">솔직한 평가를 원합니다.</div>
+      <div style="font-size:15px;color:rgba(255,248,238,.8);line-height:1.9;" data-en="Devolver knows what makes a game worth playing. We've kept the same four-person core team for 14 years and we believe in what we've made. But the eye for commercial potential? That's yours. If you see something here, let's talk. If you don't — that's a fair answer too." data-kr="게임을 볼 줄 아는 건 Devolver입니다. 저희는 14년간 같은 4인 코어팀을 유지해왔고, 만든 게임에 자신 있습니다. 하지만 상업성을 보는 눈은 여러분이 가지고 있습니다. 가능성이 보인다면 얘기해 주세요. 아니라고 생각하면, 그것도 솔직하게 말해줘도 됩니다.">솔직한 평가를 원합니다. 저희는 14년간 같은 4인 코어팀을 유지해왔고, 만든 게임에 자신 있습니다. 하지만 상업성을 보는 눈은 여러분이 가지고 있습니다. 가능성이 보인다면 얘기해 주세요. 아니라고 생각하면, 그것도 솔직하게 말해줘도 됩니다.</div>
+    </div>
+    <div class="fade-in" style="background:var(--brown);border-radius:20px;padding:36px;border-top:4px solid var(--gold);">
+      <div style="font-size:36px;margin-bottom:16px;">🤝</div>
+      <div style="font-size:16px;font-weight:700;color:var(--gold);margin-bottom:12px;" data-en="Long-term partnership, not a one-off deal." data-kr="단발 계약이 아닌 장기 파트너십.">단발 계약이 아닌 장기 파트너십.</div>
+      <div style="font-size:15px;color:rgba(255,248,238,.8);line-height:1.9;" data-en="We don't just want Steam distribution. This IP has proven merchandise potential — goods, pop-ups, collaborations. If the game works, everything around it can work too. We're looking for a partner who sees where this can go." data-kr="스팀 유통만을 원하는 게 아닙니다. 이 IP는 굿즈, 팝업스토어, 콜라보 등 실물 상품 가능성도 이미 검증됐습니다. 게임이 잘 되면 그 주변의 모든 것이 함께 됩니다. 그걸 함께 보는 파트너를 찾습니다.">스팀 유통만을 원하는 게 아닙니다. 이 IP는 굿즈, 팝업스토어, 콜라보 등 실물 상품 가능성도 이미 검증됐습니다. 게임이 잘 되면 그 주변의 모든 것이 함께 됩니다. 그걸 함께 보는 파트너를 찾습니다.</div>
+    </div>
+  </div>
+  <div class="fade-in" style="background:linear-gradient(135deg,#1a2e50,#0F1E38);border:2px solid var(--gold);border-radius:20px;padding:36px;margin-top:24px;text-align:center;">
+    <div style="font-size:15px;color:rgba(255,248,238,.75);line-height:2;max-width:700px;margin:0 auto;" data-en="We make games. You know how to show them to the world. If both sides see the potential — let's build something together." data-kr="게임은 우리가 만듭니다. 세상에 보여주는 건 여러분이 잘 합니다. 서로 가능성이 보인다면, 함께 만들어봅시다.">게임은 우리가 만듭니다. 세상에 보여주는 건 여러분이 잘 합니다. 서로 가능성이 보인다면, 함께 만들어봅시다.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-logo fade-in">
+    <img src="images/company_logo_transparent.png" alt="IDIOCRACY INC.">
+  </div>
+  <div class="contact-headline fade-in" data-en="WE ARE READY!" data-kr="우리는 준비가 되었습니다!" data-jp="すべての準備が、整いました。">すべての準備が、整いました。</div>
+  <div class="contact-message fade-in" data-en="We are ready to show Nintendo Switch™'s global users what we're made of — and we look forward to the day we move them." data-kr="닌텐도 스위치 글로벌 유저들에게 우리의 장점을 보여주고,<br>감동을 주는 그날을 기다립니다." data-jp="Nintendo Switch™のプレイヤーたちに、私たちだからこそ届けられる感動を。<br>その日のために、チーム全員で今日もこのゲームに一生懸命取り組んでいます。">Nintendo Switch™のプレイヤーたちに、私たちだからこそ届けられる感動を。<br>その日のために、チーム全員で今日もこのゲームに一生懸命取り組んでいます。<br>감동을 주는 그날을 기다립니다.</div>
+  <div class="contact-closing fade-in" data-en="'With Nintendo, we can go further.'" data-kr="'닌텐도와 함께라면, 더 멀리 갈 수 있습니다.'" data-jp="「Nintendo Switch™と共に、もっと遠くへ。」">「Nintendo Switch™と共に、もっと遠くへ。」</div>
+  <div class="confidential fade-in" data-en="For press, reviewers, and Nintendo fans." data-kr="기자, 리뷰어, 닌텐도 팬 여러분께." data-jp="プレス、レビュワー、Nintendo ファンの皆さまへ。">プレス、レビュワー、Nintendo ファンの皆さまへ。</div>
+</section>
+
+<script>
+function setLang(lang){
+  // 버튼 active
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b=>{ if(b.textContent.trim()===lang.toUpperCase()) b.classList.add('active'); });
+  // 텍스트 교체 (타이틀 img 제외)
+  // 언어별 이미지 교체
+  document.querySelectorAll('[data-en-src]').forEach(el=>{
+    if(lang==='jp' && el.getAttribute('data-jp-src')) el.src=el.getAttribute('data-jp-src');
+    else el.src=el.getAttribute('data-en-src');
+  });
+  document.querySelectorAll('[data-en],[data-kr],[data-jp]').forEach(el=>{
+    if(el.tagName==='IMG') return;
+    const txt=el.getAttribute('data-'+lang);
+    if(txt) el.innerHTML=txt;
+  });
+  // 타이틀 이미지 교체
+  const enImg=document.getElementById('hero-title-en');
+  const jpImg=document.getElementById('hero-title-jp');
+  const krImg=document.getElementById('hero-title-kr');
+  if(enImg&&jpImg){
+    enImg.style.setProperty('display','none','important');
+    jpImg.style.setProperty('display','none','important');
+    if(krImg) krImg.style.setProperty('display','none','important');
+    if(lang==='jp'){
+      jpImg.style.setProperty('display','block','important');
+    } else if(lang==='kr'){
+      if(krImg) krImg.style.setProperty('display','block','important');
+    } else {
+      enImg.style.setProperty('display','block','important');
+    }
+  }
+  // EN/JP Bold 개별 적용
+  const heroMain=document.querySelector('.hero-main');
+  if(heroMain){
+    if(lang==='jp'){
+      heroMain.classList.add('lang-jp');
+    } else {
+      heroMain.classList.remove('lang-jp');
+    }
+  }
+}
+// 라이트박스
+function openLightbox(src){
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('active');
+}
+
+// 슬라이더
+let currentSlide=0;
+const totalSlides=12;
+let autoSlideTimer=null;
+
+function updateSlider(){
+  document.getElementById('screenshotSlider').style.transform=`translateX(-${currentSlide*100}%)`;
+  document.querySelectorAll('.slider-dot').forEach((d,i)=>{
+    d.classList.toggle('active',i===currentSlide);
+  });
+}
+function moveSlide(dir){
+  currentSlide=(currentSlide+dir+totalSlides)%totalSlides;
+  updateSlider();
+  resetAutoSlide();
+}
+function goSlide(idx){
+  currentSlide=idx;
+  updateSlider();
+  resetAutoSlide();
+}
+function startAutoSlide(){
+  autoSlideTimer=setInterval(()=>{
+    currentSlide=(currentSlide+1)%totalSlides;
+    updateSlider();
+  },3000);
+}
+function resetAutoSlide(){
+  clearInterval(autoSlideTimer);
+  startAutoSlide();
+}
+startAutoSlide();
+// 키보드
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft') moveSlide(-1);
+  if(e.key==='ArrowRight') moveSlide(1);
+  if(e.key==='Escape') closeLightbox();
+});
+
+// 페이드인
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.06});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+setTimeout(()=>{document.querySelectorAll('.hero .fade-in').forEach((el,i)=>{setTimeout(()=>el.classList.add('visible'),i*150);});},100);
+document.addEventListener('DOMContentLoaded',()=>{setLang('en');toggleYoutube('en');});
+function toggleYoutube(lang){
+  var jpYt = document.getElementById('yt-jp');
+  var enYt = document.getElementById('yt-en');
+  if(!jpYt || !enYt) return;
+  function stopIframe(iframe){
+    var src = iframe.src;
+    iframe.src = '';
+    setTimeout(function(){ iframe.src = src; }, 100);
+  }
+  if(lang==='jp'){
+    stopIframe(enYt);
+    enYt.style.opacity='0';
+    enYt.style.pointerEvents='none';
+    jpYt.style.opacity='1';
+    jpYt.style.pointerEvents='auto';
+  } else {
+    // KR, EN 모두 EN 영상 사용
+    stopIframe(jpYt);
+    jpYt.style.opacity='0';
+    jpYt.style.pointerEvents='none';
+    enYt.style.opacity='1';
+    enYt.style.pointerEvents='auto';
+  }
+}
+if(document.readyState==='complete'||document.readyState==='interactive'){setLang('en');toggleYoutube('en');}
+function setLangWithYT(lang){setLang(lang);toggleYoutube(lang);}
+</script>
+</body>
+</html>
