@@ -346,6 +346,36 @@
       font-weight: 800;
     }
 
+
+    .roadmap-timeline{position:relative;padding-top:20px;margin-top:28px;}
+    .roadmap-line-track{position:absolute;top:28px;left:0;right:0;height:3px;background:rgba(255,255,255,.08);border-radius:2px;}
+    .roadmap-line-progress{height:100%;width:50%;background:linear-gradient(90deg,var(--good),var(--accent));border-radius:2px;}
+    .roadmap-grid-inner{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;}
+    .roadmap-dot{width:20px;height:20px;border-radius:50%;margin:0 auto 12px;position:relative;z-index:1;}
+    .roadmap-dot.done{background:var(--good);box-shadow:0 0 0 4px rgba(105,216,138,.2);}
+    .roadmap-dot.now{background:var(--accent);box-shadow:0 0 0 4px rgba(255,210,77,.2);}
+    .roadmap-dot.next{background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.2);}
+    @media(max-width:960px){.roadmap-grid-inner{grid-template-columns:1fr 1fr;}.roadmap-line-track{display:none;}}
+    @media(max-width:640px){.roadmap-grid-inner{grid-template-columns:1fr;}}
+
+
+    .team-full{margin-top:28px;}
+    .team-intro-box{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:var(--radius);padding:28px;margin-bottom:28px;box-shadow:var(--shadow);}
+    .team-intro-title{font-size:22px;font-weight:800;color:var(--accent);margin-bottom:10px;line-height:1.3;}
+    .team-intro-text{font-size:15px;color:var(--muted);line-height:1.8;}
+    .team-slogan{margin:20px 0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.06);}
+    .team-slogan img{width:100%;display:block;}
+    .team-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+    .team-member{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius);padding:0 0 20px;overflow:hidden;text-align:center;box-shadow:var(--shadow);}
+    .team-member img{width:100%;aspect-ratio:1;object-fit:cover;}
+    .team-member-name{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);margin:14px 12px 4px;letter-spacing:.05em;}
+    .team-member-role{font-size:13px;color:var(--muted);margin:0 12px 10px;line-height:1.5;}
+    .team-member-years{display:inline-block;padding:4px 12px;border-radius:999px;background:rgba(255,210,77,.1);border:1px solid rgba(255,210,77,.2);font-size:12px;font-weight:700;color:var(--accent);}
+    @media(max-width:640px){.team-cards{grid-template-columns:1fr 1fr;}}
+
+
+    .img-placeholder{width:100%;border-radius:var(--radius);background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 12px,rgba(255,255,255,.01) 12px 24px);border:1.5px dashed rgba(255,210,77,.3);display:flex;align-items:center;justify-content:center;min-height:200px;margin-top:20px;color:rgba(255,210,77,.5);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+
     .fade { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
     .fade.visible { opacity: 1; transform: translateY(0); }
 
@@ -453,6 +483,7 @@
             <div class="card-copy">Co-op chaos and fast visual contrast make it easier to turn gameplay into reactions, clips, and recommendation moments.</div>
           </div>
         </div>
+        <div class="img-placeholder fade">[ 게임플레이 GIF / 스크린샷 추가 예정 ]</div>
       </div>
     </section>
 
@@ -540,7 +571,7 @@
       <div class="container">
         <div class="eyebrow fade">Visual Proof</div>
         <h2 class="section-title fade">SHOW THE FUN, DON'T JUST DESCRIBE IT</h2>
-        <p class="section-sub fade">This section should prove traversal contrast, puzzle interaction, and co-op reactions. If you don't have perfect images yet, use deliberate placeholders that explain what needs to be shown instead of leaving dead empty boxes.</p>
+
         <div class="shot-grid">
           <figure class="image-card fade">
             <img src="images/Single_Deer01.png" alt="Deer single play">
@@ -637,31 +668,39 @@
         <div class="eyebrow fade">Production</div>
         <h2 class="section-title fade">CURRENT BUILD AND NEXT MILESTONES</h2>
         <p class="section-sub fade">This section should reassure a publisher that the game is already a real product path, not just a concept page. Use clear milestone language and avoid vague optimism.</p>
-        <div class="roadmap-grid">
-          <div class="timeline-card fade">
-            <div class="status done">Done</div>
-            <div class="card-title" data-en="Game Complete" data-kr="게임 완성">Game Complete</div>
-            <div class="card-copy" data-en="200 stages, 10 worlds, 200+ costumes, co-op system, 10 localizations." data-kr="200 스테이지, 10월드, 200+ 코스튬, 코옵 시스템, 10개 현지화.">200 stages, 10 worlds, 200+ costumes, co-op system, 10 localizations.</div>
-          </div>
-          <div class="timeline-card fade">
-            <div class="status done">Done</div>
-            <div class="card-title" data-en="Nintendo Switch — Live" data-kr="닌텐도 스위치 — 출시 완료">Nintendo Switch — Live</div>
-            <div class="card-copy" data-en="Launched June 25, 2026. Self-published. KR/JP/EU/GB storefronts." data-kr="2026년 6월 25일 출시. 자체 퍼블리싱. 한국/일본/EU/GB 스토어.">Launched June 25, 2026. Self-published. KR/JP/EU/GB storefronts.</div>
-          </div>
-          <div class="timeline-card fade">
-            <div class="status now">Now</div>
-            <div class="card-title" data-en="Steam — Summer 2026" data-kr="스팀 — 2026년 여름">Steam — Summer 2026</div>
-            <div class="card-copy" data-en="App ID 1706282 registered. Coming Soon page in setup." data-kr="App ID 1706282 등록 완료. Coming Soon 페이지 준비 중.">App ID 1706282 registered. Coming Soon page in setup.</div>
-          </div>
-          <div class="timeline-card fade">
-            <div class="status next">Next</div>
-            <div class="card-title" data-en="Steam Next Fest" data-kr="스팀 넥스트 페스트">Steam Next Fest</div>
-            <div class="card-copy" data-en="October 2026. Demo participation target." data-kr="2026년 10월. 데모 참가 목표.">October 2026. Demo participation target.</div>
-          </div>
-          <div class="timeline-card fade">
-            <div class="status next">Next</div>
-            <div class="card-title" data-en="With Publisher" data-kr="퍼블리셔와 함께">With Publisher</div>
-            <div class="card-copy" data-en="QA, marketing strategy, platform ops, global distribution." data-kr="QA, 마케팅 전략, 플랫폼 운영, 글로벌 유통.">QA, marketing strategy, platform ops, global distribution.</div>
+        <div class="roadmap-timeline">
+          <div class="roadmap-line-track"><div class="roadmap-line-progress"></div></div>
+          <div class="roadmap-grid-inner">
+            <div class="timeline-card fade" style="text-align:center;">
+              <div class="roadmap-dot done">✓</div>
+              <div class="status done">Done</div>
+              <div class="card-title" data-en="Game Complete" data-kr="게임 완성">Game Complete</div>
+              <div class="card-copy" data-en="200 stages, 10 worlds, 200+ costumes, co-op system, 10 localizations." data-kr="200 스테이지, 10월드, 200+ 코스튬, 코옵 시스템, 10개 현지화.">200 stages, 10 worlds, 200+ costumes, co-op system, 10 localizations.</div>
+            </div>
+            <div class="timeline-card fade" style="text-align:center;">
+              <div class="roadmap-dot done">✓</div>
+              <div class="status done">Done</div>
+              <div class="card-title" data-en="Nintendo Switch — Live" data-kr="닌텐도 스위치 — 출시 완료">Nintendo Switch — Live</div>
+              <div class="card-copy" data-en="Launched June 25, 2026. Self-published. KR/JP/EU/GB." data-kr="2026년 6월 25일 출시. 자체 퍼블리싱. 한국/일본/EU/GB.">Launched June 25, 2026. Self-published. KR/JP/EU/GB.</div>
+            </div>
+            <div class="timeline-card fade" style="text-align:center;border-top:3px solid var(--accent);">
+              <div class="roadmap-dot now">🚀</div>
+              <div class="status now">Now</div>
+              <div class="card-title" data-en="Steam — Summer 2026" data-kr="스팀 — 2026년 여름">Steam — Summer 2026</div>
+              <div class="card-copy" data-en="App ID 1706282 registered. Coming Soon page in setup." data-kr="App ID 1706282 등록 완료. Coming Soon 페이지 준비 중.">App ID 1706282 registered. Coming Soon page in setup.</div>
+            </div>
+            <div class="timeline-card fade" style="text-align:center;">
+              <div class="roadmap-dot next"></div>
+              <div class="status next">Next</div>
+              <div class="card-title" data-en="Steam Next Fest" data-kr="스팀 넥스트 페스트">Steam Next Fest</div>
+              <div class="card-copy" data-en="October 2026. Demo participation target." data-kr="2026년 10월. 데모 참가 목표.">October 2026. Demo participation target.</div>
+            </div>
+            <div class="timeline-card fade" style="text-align:center;">
+              <div class="roadmap-dot next"></div>
+              <div class="status next">Next</div>
+              <div class="card-title" data-en="With Publisher" data-kr="퍼블리셔와 함께">With Publisher</div>
+              <div class="card-copy" data-en="QA, marketing, platform ops, global distribution." data-kr="QA, 마케팅 전략, 플랫폼 운영, 글로벌 유통.">QA, marketing, platform ops, global distribution.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -669,16 +708,41 @@
 
     <section id="team">
       <div class="container">
-        <div class="eyebrow fade">Team</div>
-        <h2 class="section-title fade">SMALL TEAM, CREDIBLE DELIVERY STORY</h2>
-        <div class="team-grid">
-          <div class="panel fade">
-            <div class="card-title" data-en="Why we're credible" data-kr="왜 신뢰할 수 있는가">Why we're credible</div>
-            <div class="card-copy" data-en="IDIOCRACY, INC. has been shipping games across mobile, web, and console for 14 years. The Nintendo Switch version is complete and live — proof this team finishes what it starts. Four people. Tight scope. No feature creep." data-kr="IDIOCRACY, INC.는 14년간 모바일, 웹, 콘솔 전반에서 게임을 출시해왔습니다. 닌텐도 스위치 버전은 완성되어 출시됐습니다 — 팀이 시작한 것을 끝낸다는 증거. 4명. 명확한 범위. 군더더기 없음.">IDIOCRACY, INC. has been shipping games across mobile, web, and console for 14 years. The Nintendo Switch version is complete and live — proof this team finishes what it starts. Four people. Tight scope. No feature creep.</div>
+        <div class="eyebrow fade" data-en="The Team" data-kr="개발팀">The Team</div>
+        <h2 class="section-title fade">IDIOCRACY, INC</h2>
+        <div class="team-full">
+          <div class="team-intro-box fade">
+            <div class="team-intro-title" data-en="4 people. 14 years. Ships on time." data-kr="4명. 14년. 제때 출시한다.">4 people. 14 years. Ships on time.</div>
+            <div class="team-intro-text" data-en="IDIOCRACY, INC. has been shipping games across mobile, web, and console for 14 years. The Nintendo Switch version of Wacky is complete and live — proof this team finishes what it starts. Small team, tight scope, no feature creep. We build games players actually complete and enjoy." data-kr="IDIOCRACY, INC.는 14년간 모바일, 웹, 콘솔 전반에서 게임을 출시해왔습니다. Wacky 닌텐도 스위치 버전은 완성되어 자체 퍼블리싱으로 출시됐습니다. 작은 팀, 명확한 범위, 군더더기 없음. 플레이어가 실제로 완료하고 즐기는 게임을 만든다.">IDIOCRACY, INC. has been shipping games across mobile, web, and console for 14 years. The Nintendo Switch version of Wacky is complete and live — proof this team finishes what it starts. Small team, tight scope, no feature creep. We build games players actually complete and enjoy.</div>
+            <div class="team-slogan">
+              <img src="images/Company_slogan.png" alt="IDIOCRACY slogan">
+            </div>
           </div>
-          <div class="panel fade">
-            <div class="card-title" data-en="4 people. 14 years." data-kr="4명. 14년.">4 people. 14 years.</div>
-            <div class="card-copy" data-en="Captain (CEO), Mr. Choi (technical lead, 25+ yrs), BoiledLemon (game design, 7+ yrs), MSKim (art, 7+ yrs). Same core team since the beginning. Small and fast." data-kr="Captain (CEO), Mr. Choi (기술총괄, 25년+), BoiledLemon (게임디자인, 7년+), MSKim (아트, 7년+). 처음부터 같은 코어팀. 작고 빠르다.">Captain (CEO), Mr. Choi (technical lead, 25+ yrs), BoiledLemon (game design, 7+ yrs), MSKim (art, 7+ yrs). Same core team since the beginning. Small and fast.</div>
+          <div class="team-cards">
+            <div class="team-member fade">
+              <img src="images/Captain.png" alt="Captain">
+              <div class="team-member-name">Captain</div>
+              <div class="team-member-role" data-en="CEO · UI Design · Jack of All Trades" data-kr="대표이사 · UI 디자인 · 잡부">CEO · UI Design · Jack of All Trades</div>
+              <span class="team-member-years">25+ yrs</span>
+            </div>
+            <div class="team-member fade">
+              <img src="images/BoiledLemon.png" alt="BoiledLemon">
+              <div class="team-member-name">BoiledLemon</div>
+              <div class="team-member-role" data-en="Maps · Characters · Image Production" data-kr="맵 · 캐릭터 · 이미지 제작">Maps · Characters · Image Production</div>
+              <span class="team-member-years">7+ yrs</span>
+            </div>
+            <div class="team-member fade">
+              <img src="images/Mr_Choi.png" alt="Mr. Choi">
+              <div class="team-member-name">Mr. Choi</div>
+              <div class="team-member-role" data-en="Animation · Direction · Ideas" data-kr="애니메이션 · 연출 · 아이디어">Animation · Direction · Ideas</div>
+              <span class="team-member-years">25+ yrs</span>
+            </div>
+            <div class="team-member fade">
+              <img src="images/MSKimg.png" alt="MSKim">
+              <div class="team-member-name">MSKim</div>
+              <div class="team-member-role" data-en="Programming · Skill Development" data-kr="프로그래밍 · 스킬 제작">Programming · Skill Development</div>
+              <span class="team-member-years">7+ yrs</span>
+            </div>
           </div>
         </div>
       </div>
