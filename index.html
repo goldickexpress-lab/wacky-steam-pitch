@@ -1,129 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wacky! Deer&amp;Munk Adventure — Devolver Pitch</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Bebas+Neue&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0c1524;--bg2:#11233a;--card:#162a44;--card2:#1a3352;--text:#f7f3e9;--muted:rgba(247,243,233,.72);--gold:#ffd54d;--gold2:#ffb800;--green:#2ecc71;--red:#e44d3a;}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Inter','Noto Sans KR',sans-serif;background:linear-gradient(180deg,var(--bg) 0%,#0f1e33 100%);color:var(--text);line-height:1.65;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-.container{width:min(1120px,calc(100% - 40px));margin:0 auto}
-section{padding:84px 0;border-top:1px solid rgba(255,255,255,.04)}
-.kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:10px}
-.title{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,6vw,68px);line-height:1;letter-spacing:.03em;margin-bottom:14px}
-.sub{font-size:17px;color:var(--muted);max-width:760px;line-height:1.7}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wacky! Deer&Munk Adventure — Publisher Pitch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1320;
+      --bg-soft: #122238;
+      --panel: rgba(19, 33, 53, 0.92);
+      --panel-2: rgba(24, 42, 66, 0.96);
+      --line: rgba(255,255,255,0.08);
+      --text: #f6f3eb;
+      --muted: rgba(246,243,235,0.72);
+      --faint: rgba(246,243,235,0.52);
+      --accent: #ffd24d;
+      --accent-2: #ffb300;
+      --good: #69d88a;
+      --radius: 22px;
+      --shadow: 0 18px 60px rgba(0,0,0,0.28);
+    }
 
-/* LANG TOGGLE */
-.lang-toggle{position:fixed;top:20px;right:24px;z-index:9999;display:flex;gap:4px;background:rgba(12,21,36,.92);border:2px solid var(--gold);border-radius:30px;padding:4px;backdrop-filter:blur(8px);}
-.lang-btn{padding:6px 16px;border-radius:24px;border:none;cursor:pointer;font-weight:800;font-size:13px;transition:all .25s;background:transparent;color:var(--gold);}
-.lang-btn.active{background:var(--gold);color:#17140f;}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255,210,77,0.14), transparent 24%),
+        radial-gradient(circle at 85% 10%, rgba(105,216,138,0.10), transparent 18%),
+        linear-gradient(180deg, #09111c 0%, #0d1728 32%, #11233a 100%);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;background:radial-gradient(circle at 18% 22%,rgba(255,213,77,.18),transparent 28%),radial-gradient(circle at 82% 18%,rgba(46,204,113,.12),transparent 22%),linear-gradient(160deg,#09111d 0%,#11233a 60%,#183152 100%)}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
-.hero-card{background:rgba(11,24,40,.55);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(8px);border-radius:24px;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.28)}
-.logo-wrap{max-width:680px;margin-bottom:18px}
-.logo-wrap img{border-radius:20px;width:100%}
-.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7vw,88px);line-height:.94;letter-spacing:.02em;margin-bottom:12px}
-.hero p.hero-desc{font-size:18px;color:var(--muted);max-width:700px}
-.hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 18px}
-.tag{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
-.cta{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:14px;font-weight:800;font-size:14px}
-.cta.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#17140f}
-.cta.secondary{background:#1b2838;border:1px solid rgba(255,255,255,.12);color:var(--text)}
-.hero-proof{display:grid;gap:14px}
-.metric{background:var(--card);border:1px solid rgba(255,255,255,.06);border-top:3px solid var(--gold);padding:22px;border-radius:20px}
-.metric-num{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;color:var(--gold);margin-bottom:6px}
-.metric-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
-.metric-copy{font-size:14px;color:var(--text)}
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    section { padding: 88px 0; border-top: 1px solid rgba(255,255,255,0.04); }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 6vw, 74px);
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 780px;
+    }
 
-/* SECTIONS */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:28px}
-.panel{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:22px;padding:26px}
-.panel h3{font-size:22px;font-weight:800;margin-bottom:10px}
-.panel p{color:var(--muted);font-size:15px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
-.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:28px}
-.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:24px}
-.num{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--gold);line-height:1;margin-bottom:8px}
-.card-title{font-size:17px;font-weight:800;margin-bottom:8px}
-.card-copy{font-size:14px;color:var(--muted);line-height:1.6}
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 36px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .hero-main,
+    .hero-side,
+    .panel,
+    .image-card,
+    .stat-card,
+    .quote-card,
+    .timeline-card,
+    .ask-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+    .hero-main { padding: 30px; }
+    .hero-side { padding: 22px; display: grid; gap: 14px; }
+    .hero-logo-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+    .hero-logo-wrap img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #0f1a2b;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(58px, 9vw, 112px);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+    .hero p {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 720px;
+    }
+    .tag-row, .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); opacity: 0.96; }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #1a1509;
+    }
+    .btn.secondary {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-card {
+      padding: 18px 18px 16px;
+      border-top: 3px solid var(--accent);
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 54px;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--faint);
+      margin-bottom: 8px;
+    }
+    .stat-copy { font-size: 14px; color: var(--muted); }
 
-/* CHARACTERS */
-.char-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px}
-.char-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:22px;padding:24px}
-.char-header{display:flex;align-items:center;gap:16px;margin-bottom:16px}
-.char-profile img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)}
-.char-name{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);letter-spacing:.05em}
-.char-type{font-size:12px;font-weight:800;text-transform:uppercase;color:var(--muted);letter-spacing:.1em;margin-top:2px}
-.char-skills{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.skill-tag{padding:6px 12px;background:rgba(255,213,77,.1);border:1px solid rgba(255,213,77,.2);border-radius:999px;font-size:12px;font-weight:700;color:var(--gold)}
-.char-gifs{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-.gif-item{width:64px;height:64px;border-radius:10px;overflow:hidden;background:rgba(255,255,255,.04)}
-.gif-item img{width:100%;height:100%;object-fit:contain}
-.char-ability-desc{font-size:14px;color:var(--muted);margin-top:12px;line-height:1.6}
+    .grid-3,
+    .shot-grid,
+    .ip-grid,
+    .roadmap-grid,
+    .ask-grid { display: grid; gap: 18px; }
+    .grid-3,
+    .ask-grid { grid-template-columns: repeat(3, 1fr); }
+    .shot-grid { grid-template-columns: repeat(3, 1fr); margin-top: 28px; }
+    .ip-grid { grid-template-columns: repeat(4, 1fr); margin-top: 28px; }
+    .roadmap-grid { grid-template-columns: repeat(5, 1fr); margin-top: 28px; }
 
-/* SCREENSHOTS */
-.shot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-.shot{position:relative;border-radius:18px;overflow:hidden;background:var(--card2);border:1px solid rgba(255,255,255,.06)}
-.shot img{aspect-ratio:16/9;object-fit:cover;width:100%}
-.caption{padding:12px 16px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(8,16,28,.92) 100%);position:absolute;left:0;right:0;bottom:0}
-.caption strong{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
-.caption span{display:block;font-size:13px;color:var(--text);margin-top:3px}
+    .panel { padding: 24px; }
+    .card-title { font-size: 19px; font-weight: 800; margin-bottom: 8px; }
+    .card-copy { font-size: 15px; color: var(--muted); }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 44px;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
 
-/* POSITIONING */
-.positioning{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;margin-top:28px}
-.compare{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:26px}
-.compare h3{font-size:20px;font-weight:800;margin-bottom:14px}
-.compare ul{list-style:none;display:grid;gap:10px}
-.compare li{padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.04);font-size:14px;color:var(--muted)}
-.compare li strong{color:var(--gold);display:block;margin-bottom:2px}
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 20px;
+      align-items: start;
+      margin-top: 28px;
+    }
 
-/* STORY */
-.story-box{background:linear-gradient(180deg,var(--card) 0%,#13263f 100%);border-left:5px solid var(--gold);border-radius:20px;padding:30px;margin-top:28px}
-.story-box p{font-size:17px;color:var(--text);max-width:900px;line-height:1.8}
-.story-imgs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
-.story-imgs img{border-radius:14px;width:100%}
+    .image-card {
+      overflow: hidden;
+      position: relative;
+      min-height: 320px;
+      background: var(--panel-2);
+    }
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 16 / 10;
+      background: #132133;
+    }
+    .image-card figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 16px 18px;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(7,15,27,0.94) 100%);
+    }
+    .image-card strong {
+      display: block;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+    .image-card span {
+      display: block;
+      font-size: 14px;
+      color: var(--text);
+      margin-top: 4px;
+    }
 
-/* IP */
-.ip-stat{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:22px;text-align:center}
-.ip-stat .big{font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--gold);line-height:1}
-.ip-stat .small{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+    .fallback-box {
+      display: grid;
+      place-items: center;
+      min-height: 320px;
+      padding: 26px;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 12px, rgba(255,255,255,0.01) 12px 24px);
+      color: var(--muted);
+    }
+    .fallback-box b {
+      display: block;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .fallback-box small {
+      font-size: 13px;
+      color: var(--faint);
+      letter-spacing: 0.04em;
+    }
 
-/* ROADMAP */
-.step{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:22px}
-.badge{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;padding:5px 10px;border-radius:999px;margin-bottom:10px}
-.done{background:rgba(46,204,113,.16);color:#9af0bf}
-.now{background:rgba(255,213,77,.14);color:var(--gold)}
-.next{background:rgba(255,255,255,.08);color:var(--muted)}
+    .story-box {
+      margin-top: 28px;
+      background: linear-gradient(180deg, var(--panel) 0%, rgba(17,31,50,0.96) 100%);
+      border-left: 5px solid var(--accent);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+    .story-box p { font-size: 18px; max-width: 920px; }
 
-/* TEAM */
-.team-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;margin-top:28px}
-.team-box{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:22px;padding:28px}
-.team-box h3{font-size:22px;font-weight:800;margin-bottom:12px}
-.team-box p,.team-box div{color:var(--muted);font-size:14px;line-height:1.7}
-.muted-list{display:grid;gap:10px;margin-top:8px}
-.muted-list div::before{content:"— ";color:var(--gold)}
+    .quote-card { padding: 26px; }
+    .quote-card ul { list-style: none; display: grid; gap: 12px; margin-top: 8px; }
+    .quote-card li {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+    }
+    .quote-card li strong { color: var(--accent); }
 
-/* ASK / FOOTER */
-.footer-cta{background:linear-gradient(180deg,#13263f 0%,#0f1e33 100%);border:1px solid rgba(255,255,255,.08);border-top:3px solid var(--gold);border-radius:26px;padding:40px;margin-top:28px;text-align:center}
-.footer-cta h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,56px);line-height:1.05;margin-bottom:12px}
-.footer-cta p{font-size:17px;color:var(--muted);max-width:680px;margin:0 auto 22px}
-.contact-line{display:inline-block;background:rgba(255,255,255,.06);padding:14px 22px;border-radius:14px;border:1px solid rgba(255,255,255,.08);font-weight:800;font-size:15px}
+    .ip-stat, .timeline-card, .ask-card { padding: 22px; }
+    .ip-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 54px;
+      line-height: 1;
+      color: var(--accent);
+      text-align: center;
+    }
+    .ip-note {
+      margin-top: 8px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
 
-.fade{opacity:0;transform:translateY(20px);transition:all .6s ease}
-.fade.visible{opacity:1;transform:translateY(0)}
+    .status {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .done { background: rgba(105,216,138,0.16); color: #a4f1bc; }
+    .now { background: rgba(255,210,77,0.14); color: var(--accent); }
+    .next { background: rgba(255,255,255,0.08); color: var(--muted); }
 
-@media(max-width:960px){.hero-grid,.two-col,.positioning,.team-wrap,.char-grid{grid-template-columns:1fr}.grid3,.grid4,.grid5{grid-template-columns:1fr 1fr}.shot-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.container{width:calc(100% - 24px)}.grid3,.grid4,.grid5,.shot-grid{grid-template-columns:1fr}.hero{padding:40px 0}.story-imgs{grid-template-columns:1fr}}
-</style>
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .footer-callout {
+      margin-top: 30px;
+      text-align: center;
+      padding: 34px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(18,34,56,0.98) 0%, rgba(15,28,47,0.98) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 3px solid var(--accent);
+      box-shadow: var(--shadow);
+    }
+    .footer-callout h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.04;
+      margin-bottom: 12px;
+    }
+    .footer-callout p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 18px;
+    }
+    .contact-pill {
+      display: inline-block;
+      padding: 15px 20px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-weight: 800;
+    }
+
+    .fade { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .fade.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      .hero-grid, .split, .team-grid { grid-template-columns: 1fr; }
+      .grid-3, .shot-grid, .ask-grid, .ip-grid { grid-template-columns: 1fr 1fr; }
+      .roadmap-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 68px 0; }
+      .hero h1 { font-size: clamp(52px, 17vw, 84px); }
+      .hero p, .section-sub, .story-box p, .footer-callout p { font-size: 16px; }
+      .grid-3, .shot-grid, .ask-grid, .ip-grid, .roadmap-grid { grid-template-columns: 1fr; }
+    }
+
+    .lang-toggle{position:fixed;top:20px;right:24px;z-index:9999;display:flex;gap:4px;background:rgba(9,17,28,.92);border:2px solid var(--accent);border-radius:30px;padding:4px;backdrop-filter:blur(8px);}
+    .lang-btn{padding:6px 16px;border-radius:24px;border:none;cursor:pointer;font-weight:800;font-size:13px;transition:all .25s;background:transparent;color:var(--accent);font-family:'Inter',sans-serif;}
+    .lang-btn.active{background:var(--accent);color:#1a1509;}
+    .char-section{margin-top:28px;}
+    .char-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .char-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);}
+    .char-header{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+    .char-profile img{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);}
+    .char-name{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent);letter-spacing:.05em;}
+    .char-type{font-size:12px;font-weight:800;text-transform:uppercase;color:var(--faint);letter-spacing:.1em;margin-top:2px;}
+    .char-ability-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:12px;}
+    .char-skills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+    .skill-tag{padding:5px 12px;background:rgba(255,210,77,.1);border:1px solid rgba(255,210,77,.2);border-radius:999px;font-size:12px;font-weight:700;color:var(--accent);}
+    .char-gifs{display:flex;gap:8px;flex-wrap:wrap;}
+    .gif-item{width:60px;height:60px;border-radius:10px;overflow:hidden;background:rgba(255,255,255,.04);}
+    .gif-item img{width:100%;height:100%;object-fit:contain;}
+    .story-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;}
+    .story-imgs img{border-radius:14px;width:100%;}
+    @media(max-width:640px){.char-grid{grid-template-columns:1fr;}.story-imgs{grid-template-columns:1fr;}}
+  </style>
 </head>
 <body>
 
@@ -132,350 +389,352 @@ section{padding:84px 0;border-top:1px solid rgba(255,255,255,.04)}
   <button class="lang-btn" onclick="setLang('kr')">KR</button>
 </div>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="container hero-grid">
-    <div class="hero-card fade">
-      <div class="logo-wrap">
-        <img src="images/title_EN.png" id="title-en" alt="Wacky! Deer&Munk Adventure">
-        <img src="images/title_KR.png" id="title-kr" style="display:none" alt="우당탕탕 고라니와 다람쥐의 대모험">
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-main fade">
+        <div class="hero-logo-wrap">
+          <img src="images/title_EN.png" id="title-en" alt="Wacky! Deer&Munk Adventure" style="width:100%">
+          <img src="images/title_KR.png" id="title-kr" alt="우당탕탕 고라니와 다람쥐의 대모험" style="width:100%;display:none">
+        </div>
+        <div class="eyebrow" data-en="Publisher Pitch — Devolver Digital" data-kr="퍼블리셔 피치 — Devolver Digital">Publisher Pitch — Devolver Digital</div>
+        <h1 data-en="WEIRD, TOYETIC,<br>AND EASY TO READ FAST" data-kr="이상하고, 장난감 같고,<br>즉시 이해되는 게임">WEIRD, TOYETIC,<br>AND EASY TO READ FAST</h1>
+        <p data-en="A chaotic 2D buddy adventure where two wildly different animals turn every puzzle into slapstick. Solo swap or local co-op on one device — no network required." data-kr="서로 완전히 다른 두 동물이 모든 퍼즐을 난장판으로 만드는 2D 어드벤처. 혼자 교대하거나, 한 기기에서 둘이 함께 — 네트워크 불필요.">A chaotic 2D buddy adventure where two wildly different animals turn every puzzle into slapstick. Solo swap or local co-op on one device — no network required.</p>
+        <div class="tag-row">
+          <div class="tag" data-en="2D Action Adventure" data-kr="2D 액션 어드벤처">2D Action Adventure</div>
+          <div class="tag" data-en="Solo Swap + Local Co-op" data-kr="솔로 교대 + 로컬 코옵">Solo Swap + Local Co-op</div>
+          <div class="tag" data-en="Clip-Friendly Comedy" data-kr="클립 친화적 코미디">Clip-Friendly Comedy</div>
+          <div class="tag" data-en="Licensed Character IP" data-kr="라이선스 캐릭터 IP">Licensed Character IP</div>
+        </div>
+        <div class="button-row">
+          <a class="btn primary" href="https://store.steampowered.com/app/1706282" target="_blank" rel="noopener noreferrer" data-en="🖥️ Steam Page" data-kr="🖥️ 스팀 페이지">🖥️ Steam Page</a>
+          <a class="btn secondary" href="https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/WACKY-DEER-MUNK-ADVENTURE-3128075.html" target="_blank" data-en="🎮 Nintendo Switch — Live Now" data-kr="🎮 닌텐도 스위치 — 출시 완료">🎮 Nintendo Switch — Live Now</a>
+        </div>
       </div>
-      <div class="kicker" data-en="Devolver Digital — Publisher Pitch" data-kr="Devolver Digital — 퍼블리셔 피치">Devolver Digital — Publisher Pitch</div>
-      <h1 data-en="WEIRD, TOYETIC,<br>IMMEDIATELY READABLE" data-kr="이상하고, 장난감 같고,<br>즉시 이해되는">WEIRD, TOYETIC,<br>IMMEDIATELY READABLE</h1>
-      <p class="hero-desc" data-en="A chaotic 2D buddy adventure where two wildly different animals turn every puzzle into slapstick. Solo swap or local co-op on one device — no network required." data-kr="서로 완전히 다른 두 동물이 모든 퍼즐을 난장판으로 만드는 2D 어드벤처. 혼자 교대하거나, 한 기기에서 둘이 함께 — 네트워크 불필요.">A chaotic 2D buddy adventure where two wildly different animals turn every puzzle into slapstick. Solo swap or local co-op on one device — no network required.</p>
-      <div class="hero-tags">
-        <div class="tag" data-en="2D Action Platformer" data-kr="2D 액션 플랫포머">2D Action Platformer</div>
-        <div class="tag" data-en="Solo Swap + Local Co-op" data-kr="솔로 교대 + 로컬 코옵">Solo Swap + Local Co-op</div>
-        <div class="tag" data-en="Clip-friendly Comedy" data-kr="클립 친화적 코미디">Clip-friendly Comedy</div>
-        <div class="tag" data-en="Licensed Character IP" data-kr="라이선스 캐릭터 IP">Licensed Character IP</div>
-      </div>
-      <div class="cta-row">
-        <a class="cta primary" href="https://store.steampowered.com/app/1706282" target="_blank" data-en="🖥️ Steam Page" data-kr="🖥️ 스팀 페이지">🖥️ Steam Page</a>
-        <a class="cta secondary" href="https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/WACKY-DEER-MUNK-ADVENTURE-3128075.html" target="_blank" data-en="🎮 Nintendo Switch — Live Now" data-kr="🎮 닌텐도 스위치 — 출시 완료">🎮 Nintendo Switch — Live Now</a>
+      <div class="hero-side fade">
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-label" data-en="Distinct playable roles" data-kr="뚜렷이 다른 2개 역할">Distinct playable roles</div>
+          <div class="stat-copy" data-en="DEER breaks things. MUNK fixes them. Usually. The contrast is the fun." data-kr="고라니가 부수고. 다람쥐가 고친다. 보통은. 그 대비가 재미다.">DEER breaks things. MUNK fixes them. Usually. The contrast is the fun.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1</div>
+          <div class="stat-label" data-en="200 Stages — 10 Worlds" data-kr="200 스테이지 — 10 월드">200 Stages — 10 Worlds</div>
+          <div class="stat-copy" data-en="Already complete and live on Nintendo Switch since June 25, 2026." data-kr="2026년 6월 25일부터 닌텐도 스위치에 출시 완료.">Already complete and live on Nintendo Switch since June 25, 2026.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">IP</div>
+          <div class="stat-label" data-en="Market tested, not vaporware" data-kr="실제 출시, 컨셉이 아님">Market tested, not vaporware</div>
+          <div class="stat-copy" data-en="Switch release proves the team ships. Steam is next. We finish what we start." data-kr="스위치 출시가 팀이 완성한다는 걸 증명한다. 스팀이 다음이다.">Switch release proves the team ships. Steam is next. We finish what we start.</div>
+        </div>
       </div>
     </div>
-    <div class="hero-proof fade">
-      <div class="metric">
-        <div class="metric-num">2</div>
-        <div class="metric-label" data-en="Distinct playable roles" data-kr="뚜렷이 다른 2개 역할">Distinct playable roles</div>
-        <div class="metric-copy" data-en="DEER breaks things. MUNK fixes them. Usually. The contrast is the fun." data-kr="고라니가 부수고. 다람쥐가 고친다. 보통은. 그 대비가 재미다.">DEER breaks things. MUNK fixes them. Usually. The contrast is the fun.</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">200</div>
-        <div class="metric-label" data-en="Stages across 10 worlds" data-kr="10개 월드, 200개 스테이지">Stages across 10 worlds</div>
-        <div class="metric-copy" data-en="Already complete and live on Nintendo Switch as of June 25, 2026." data-kr="닌텐도 스위치에 2026년 6월 25일 출시 완료.">Already complete and live on Nintendo Switch as of June 25, 2026.</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">NOW</div>
-        <div class="metric-label" data-en="Market tested, not vaporware" data-kr="실제 출시, 컨셉이 아님">Market tested, not vaporware</div>
-        <div class="metric-copy" data-en="Switch release proves the game ships. Steam is next. We finish what we start." data-kr="스위치 출시가 증명함. 스팀이 다음. 시작한 건 끝낸다.">Switch release proves the game ships. Steam is next. We finish what we start.</div>
-      </div>
-    </div>
-  </div>
-</header>
+  </header>
 
-<main>
-  <!-- HOOK -->
-  <section id="hook">
-    <div class="container">
-      <div class="kicker fade" data-en="Game Hook" data-kr="게임 훅">Game Hook</div>
-      <h2 class="title fade" data-en="WHY THIS STANDS OUT IN 3 SECONDS" data-kr="3초 안에 이해되는 이유">WHY THIS STANDS OUT IN 3 SECONDS</h2>
-      <p class="sub fade" data-en="Two animal heroes, two contrasting abilities, one playful world. Easy to read in a trailer, a festival demo, or a streamer clip." data-kr="두 동물 히어로, 대비되는 두 능력, 하나의 유쾌한 세계. 트레일러, 페스티벌 데모, 스트리머 클립에서 바로 읽힌다.">Two animal heroes, two contrasting abilities, one playful world. Easy to read in a trailer, a festival demo, or a streamer clip.</p>
-      <div class="grid3">
-        <div class="card fade">
-          <div class="num">01</div>
-          <div class="card-title" data-en="Readable in seconds" data-kr="몇 초 안에 읽힌다">Readable in seconds</div>
-          <div class="card-copy" data-en="One screenshot communicates character contrast, mood, and light-chaos tone instantly." data-kr="스크린샷 하나로 캐릭터 대비, 분위기, 코믹 카오스 톤이 전달된다.">One screenshot communicates character contrast, mood, and light-chaos tone instantly.</div>
-        </div>
-        <div class="card fade">
-          <div class="num">02</div>
-          <div class="card-title" data-en="Comedy from interaction" data-kr="상호작용에서 나오는 코미디">Comedy from interaction</div>
-          <div class="card-copy" data-en="The fun is not in dialogue or art style alone — it comes from how each character solves or breaks the same situation differently." data-kr="재미는 대사나 아트 스타일만이 아니다 — 같은 상황을 각 캐릭터가 다르게 해결하거나 망치는 데서 온다.">The fun is not in dialogue or art style alone — it comes from how each character solves or breaks the same situation differently.</div>
-        </div>
-        <div class="card fade">
-          <div class="num">03</div>
-          <div class="card-title" data-en="Co-op and solo both work" data-kr="협동도 솔로도 된다">Co-op and solo both work</div>
-          <div class="card-copy" data-en="Players swap roles alone or share chaos together. Same mechanics, two marketable player fantasies." data-kr="혼자 역할을 교대하거나 둘이 함께 난장판을 즐긴다. 같은 메카닉, 두 가지 마케팅 포인트.">Players swap roles alone or share chaos together. Same mechanics, two marketable player fantasies.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CORE LOOP -->
-  <section id="loop">
-    <div class="container">
-      <div class="kicker fade" data-en="Core Loop" data-kr="핵심 루프">Core Loop</div>
-      <h2 class="title fade" data-en="WHAT THE PLAYER ACTUALLY DOES" data-kr="플레이어가 실제로 하는 것">WHAT THE PLAYER ACTUALLY DOES</h2>
-      <p class="sub fade" data-en="Explore → identify the obstacle → use the right ability or switch roles → trigger a funny or satisfying outcome → push to the next challenge." data-kr="탐색 → 장애물 파악 → 맞는 능력 사용 또는 역할 교체 → 웃기거나 통쾌한 결과 → 다음 도전.">Explore → identify the obstacle → use the right ability or switch roles → trigger a funny or satisfying outcome → push to the next challenge.</p>
-      <div class="grid3">
-        <div class="card fade">
-          <div class="card-title" data-en="Explore" data-kr="탐색">Explore</div>
-          <div class="card-copy" data-en="Move through compact 2D spaces built for readable obstacles, surprising reactions, and fast trial-and-error fun." data-kr="읽기 쉬운 장애물, 예상 밖 반응, 빠른 시행착오가 있는 압축된 2D 공간 탐색.">Move through compact 2D spaces built for readable obstacles, surprising reactions, and fast trial-and-error fun.</div>
-        </div>
-        <div class="card fade">
-          <div class="card-title" data-en="Swap or cooperate" data-kr="교대 또는 협동">Swap or cooperate</div>
-          <div class="card-copy" data-en="Solo players alternate roles; co-op players divide tasks. Same level, totally different social experience." data-kr="솔로는 역할을 교대하고, 코옵은 역할을 나눈다. 같은 레벨, 완전히 다른 경험.">Solo players alternate roles; co-op players divide tasks. Same level, totally different social experience.</div>
-        </div>
-        <div class="card fade">
-          <div class="card-title" data-en="Solve by personality" data-kr="성격으로 해결">Solve by personality</div>
-          <div class="card-copy" data-en="Each animal suggests different behavior, timing, and humorous outcomes. Not just a different skin." data-kr="각 동물은 다른 행동 방식, 타이밍, 코믹한 결과를 낸다. 단순한 스킨 차이가 아니다.">Each animal suggests different behavior, timing, and humorous outcomes. Not just a different skin.</div>
+  <main>
+    <section id="hook">
+      <div class="container">
+        <div class="eyebrow fade">Hook</div>
+        <h2 class="section-title fade">WHY THIS GAME MAKES SENSE QUICKLY</h2>
+        <p class="section-sub fade">A publisher should understand the pitch in seconds: cute but not passive, character-driven but not text-heavy, and funny because of interaction rather than scripted jokes. That makes the game easy to judge in a live demo, festival setting, or short capture clip.</p>
+        <div class="grid-3" style="margin-top:28px;">
+          <div class="panel fade">
+            <div class="step-num">01</div>
+            <div class="card-title">Immediate readability</div>
+            <div class="card-copy">The two protagonists are visually distinct and imply different uses before the player reads anything.</div>
+          </div>
+          <div class="panel fade">
+            <div class="step-num">02</div>
+            <div class="card-title">Comedy through systems</div>
+            <div class="card-copy">The fun comes from traversal, timing, and how each role changes the same situation, not just from cute presentation.</div>
+          </div>
+          <div class="panel fade">
+            <div class="step-num">03</div>
+            <div class="card-title">Socially marketable</div>
+            <div class="card-copy">Co-op chaos and fast visual contrast make it easier to turn gameplay into reactions, clips, and recommendation moments.</div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CHARACTERS -->
-  <section id="characters">
-    <div class="container">
-      <div class="kicker fade" data-en="Two Roles. One Chaos." data-kr="두 역할. 하나의 난장판.">Two Roles. One Chaos.</div>
-      <h2 class="title fade" data-en="DEER BREAKS IT. MUNK FIXES IT." data-kr="고라니가 부수고. 다람쥐가 고친다.">DEER BREAKS IT. MUNK FIXES IT.</h2>
-      <p class="sub fade" data-en="Neither can clear the stage alone. That's the whole point." data-kr="둘 다 혼자서는 스테이지를 클리어할 수 없다. 그게 전부다.">Neither can clear the stage alone. That's the whole point.</p>
-      <div class="char-grid">
-        <div class="char-card fade">
-          <div class="char-header">
-            <div class="char-profile"><img src="images/Profile_Deer.png" alt="GO-rani"></div>
-            <div>
-              <div class="char-name">GO-RANI</div>
-              <div class="char-type" data-en="⚡ POWER TYPE" data-kr="⚡ 파워형">⚡ POWER TYPE</div>
+    <section id="gameplay-loop">
+      <div class="container">
+        <div class="eyebrow fade">Core Loop</div>
+        <h2 class="section-title fade">WHAT THE PLAYER ACTUALLY DOES</h2>
+        <p class="section-sub fade">The best publisher pitch is a loop, not a lore summary. Players explore, identify the obstacle, use the right animal ability or switch roles, trigger a satisfying or silly outcome, and push into the next challenge.</p>
+        <div class="grid-3" style="margin-top:28px;">
+          <div class="panel fade">
+            <div class="card-title">Explore compact spaces</div>
+            <div class="card-copy">Readable 2D spaces let players quickly spot routes, hazards, and interaction opportunities.</div>
+          </div>
+          <div class="panel fade">
+            <div class="card-title">Swap or cooperate</div>
+            <div class="card-copy">Solo players alternate roles while co-op players divide tasks naturally, creating two valid play fantasies from one design spine.</div>
+          </div>
+          <div class="panel fade">
+            <div class="card-title">Solve by personality</div>
+            <div class="card-copy">Each character is functionally different enough that choosing who acts becomes part of the fun.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="characters">
+      <div class="container">
+        <div class="eyebrow fade" data-en="Two Roles. One Chaos." data-kr="두 역할. 하나의 난장판.">Two Roles. One Chaos.</div>
+        <h2 class="section-title fade" data-en="DEER BREAKS IT. MUNK FIXES IT." data-kr="고라니가 부수고. 다람쥐가 고친다.">DEER BREAKS IT. MUNK FIXES IT.</h2>
+        <p class="section-sub fade" data-en="Neither can clear the stage alone. That's the whole point." data-kr="둘 다 혼자서는 스테이지를 클리어할 수 없다. 그게 전부다.">Neither can clear the stage alone. That's the whole point.</p>
+        <div class="char-section">
+          <div class="char-grid">
+            <div class="char-card fade">
+              <div class="char-header">
+                <div class="char-profile"><img src="images/Profile_Deer.png" alt="GO-rani"></div>
+                <div>
+                  <div class="char-name">GO-RANI</div>
+                  <div class="char-type" data-en="⚡ POWER TYPE" data-kr="⚡ 파워형">⚡ POWER TYPE</div>
+                </div>
+              </div>
+              <div class="char-ability-desc" data-en="Dash through barriers, high jump over obstacles, lift and move heavy objects, wield weapons. GO-rani breaks the path open." data-kr="장벽을 대시로 돌파하고, 높이 점프하고, 무거운 오브젝트를 들어 이동하고, 무기를 사용한다. 고라니가 길을 연다.">Dash through barriers, high jump over obstacles, lift and move heavy objects, wield weapons. GO-rani breaks the path open.</div>
+              <div class="char-skills">
+                <div class="skill-tag" data-en="Dash" data-kr="대시">Dash</div>
+                <div class="skill-tag" data-en="High Jump" data-kr="높은 점프">High Jump</div>
+                <div class="skill-tag" data-en="Lift Objects" data-kr="오브젝트 이동">Lift Objects</div>
+                <div class="skill-tag" data-en="Weapons" data-kr="무기 사용">Weapons</div>
+              </div>
+              <div class="char-gifs">
+                <div class="gif-item"><img src="images/go_ce1.gif" alt="GO-rani 1"></div>
+                <div class="gif-item"><img src="images/go_ce2.gif" alt="GO-rani 2"></div>
+                <div class="gif-item"><img src="images/go_ce3.gif" alt="GO-rani 3"></div>
+                <div class="gif-item"><img src="images/go_ce4.gif" alt="GO-rani 4"></div>
+                <div class="gif-item"><img src="images/go_ce5.gif" alt="GO-rani 5"></div>
+              </div>
+            </div>
+            <div class="char-card fade">
+              <div class="char-header">
+                <div class="char-profile"><img src="images/Profile_munk.png" alt="DA-munk"></div>
+                <div>
+                  <div class="char-name">DA-MUNK</div>
+                  <div class="char-type" data-en="🌀 AGILITY TYPE" data-kr="🌀 민첩형">🌀 AGILITY TYPE</div>
+                </div>
+              </div>
+              <div class="char-ability-desc" data-en="Double jump to reach high platforms, glide long distances, slip through narrow passages only DA-munk can fit. MUNK finds the route GO-rani can't." data-kr="2단 점프로 높은 곳에 도달하고, 장거리를 활강하고, 다람쥐만 통과할 수 있는 좁은 통로를 지나간다. 고라니가 갈 수 없는 루트를 연다.">Double jump to reach high platforms, glide long distances, slip through narrow passages only DA-munk can fit. MUNK finds the route GO-rani can't.</div>
+              <div class="char-skills">
+                <div class="skill-tag" data-en="Double Jump" data-kr="2단 점프">Double Jump</div>
+                <div class="skill-tag" data-en="Glide" data-kr="활강">Glide</div>
+                <div class="skill-tag" data-en="Narrow Passages" data-kr="좁은 통로">Narrow Passages</div>
+              </div>
+              <div class="char-gifs">
+                <div class="gif-item"><img src="images/da_ce1.gif" alt="DA-munk 1"></div>
+                <div class="gif-item"><img src="images/da_ce2.gif" alt="DA-munk 2"></div>
+                <div class="gif-item"><img src="images/da_ce3.gif" alt="DA-munk 3"></div>
+                <div class="gif-item"><img src="images/da_ce4.gif" alt="DA-munk 4"></div>
+                <div class="gif-item"><img src="images/da_ce5.gif" alt="DA-munk 5"></div>
+              </div>
             </div>
           </div>
-          <div class="char-ability-desc" data-en="Dash through barriers, high jump over obstacles, lift and move heavy objects, wield weapons. GO-rani breaks the path open." data-kr="장벽을 대시로 돌파하고, 높이 점프하고, 무거운 오브젝트를 들어 이동하고, 무기를 사용한다. 고라니가 길을 연다.">Dash through barriers, high jump over obstacles, lift and move heavy objects, wield weapons. GO-rani breaks the path open.</div>
-          <div class="char-skills">
-            <div class="skill-tag" data-en="Dash" data-kr="대시">Dash</div>
-            <div class="skill-tag" data-en="High Jump" data-kr="높은 점프">High Jump</div>
-            <div class="skill-tag" data-en="Lift Objects" data-kr="오브젝트 이동">Lift Objects</div>
-            <div class="skill-tag" data-en="Weapons" data-kr="무기 사용">Weapons</div>
-          </div>
-          <div class="char-gifs">
-            <div class="gif-item"><img src="images/go_ce1.gif" alt="GO-rani 1"></div>
-            <div class="gif-item"><img src="images/go_ce2.gif" alt="GO-rani 2"></div>
-            <div class="gif-item"><img src="images/go_ce3.gif" alt="GO-rani 3"></div>
-            <div class="gif-item"><img src="images/go_ce4.gif" alt="GO-rani 4"></div>
-            <div class="gif-item"><img src="images/go_ce5.gif" alt="GO-rani 5"></div>
-          </div>
-        </div>
-        <div class="char-card fade">
-          <div class="char-header">
-            <div class="char-profile"><img src="images/Profile_munk.png" alt="DA-munk"></div>
-            <div>
-              <div class="char-name">DA-MUNK</div>
-              <div class="char-type" data-en="🌀 AGILITY TYPE" data-kr="🌀 민첩형">🌀 AGILITY TYPE</div>
-            </div>
-          </div>
-          <div class="char-ability-desc" data-en="Double jump to reach high platforms, glide long distances, slip through narrow passages only DA-munk can fit. MUNK finds the route GO-rani can't." data-kr="2단 점프로 높은 곳에 도달하고, 장거리를 활강하고, 다람쥐만 통과할 수 있는 좁은 통로를 지나간다. 고라니가 갈 수 없는 루트를 연다.">Double jump to reach high platforms, glide long distances, slip through narrow passages only DA-munk can fit. MUNK finds the route GO-rani can't.</div>
-          <div class="char-skills">
-            <div class="skill-tag" data-en="Double Jump" data-kr="2단 점프">Double Jump</div>
-            <div class="skill-tag" data-en="Glide" data-kr="활강">Glide</div>
-            <div class="skill-tag" data-en="Narrow Passages" data-kr="좁은 통로">Narrow Passages</div>
-          </div>
-          <div class="char-gifs">
-            <div class="gif-item"><img src="images/da_ce1.gif" alt="DA-munk 1"></div>
-            <div class="gif-item"><img src="images/da_ce2.gif" alt="DA-munk 2"></div>
-            <div class="gif-item"><img src="images/da_ce3.gif" alt="DA-munk 3"></div>
-            <div class="gif-item"><img src="images/da_ce4.gif" alt="DA-munk 4"></div>
-            <div class="gif-item"><img src="images/da_ce5.gif" alt="DA-munk 5"></div>
-          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- VISUAL PROOF -->
-  <section id="proof">
-    <div class="container">
-      <div class="kicker fade" data-en="Core Gameplay Moments" data-kr="핵심 게임플레이 장면">Core Gameplay Moments</div>
-      <h2 class="title fade" data-en="SHOW THE FUN, DON'T OVEREXPLAIN IT" data-kr="설명하지 말고 보여줘라">SHOW THE FUN, DON'T OVEREXPLAIN IT</h2>
-      <div class="shot-grid">
-        <figure class="shot fade">
-          <img src="images/Single_Deer01.png" alt="Deer single play">
-          <figcaption class="caption">
-            <strong data-en="Role contrast" data-kr="역할 대비">Role contrast</strong>
-            <span data-en="Different bodies, different routes, instant readability." data-kr="다른 몸, 다른 루트, 즉각적인 이해.">Different bodies, different routes, instant readability.</span>
-          </figcaption>
-        </figure>
-        <figure class="shot fade">
-          <img src="images/Co-op04.png" alt="Co-op play">
-          <figcaption class="caption">
-            <strong data-en="Co-op chaos" data-kr="협동 난장판">Co-op chaos</strong>
-            <span data-en="Good co-op moments become social moments, clips, and word-of-mouth." data-kr="좋은 협동 순간은 소셜 순간이 되고 클립이 된다.">Good co-op moments become social moments, clips, and word-of-mouth.</span>
-          </figcaption>
-        </figure>
-        <figure class="shot fade">
-          <img src="images/Boss_01_fix.png" alt="Boss battle">
-          <figcaption class="caption">
-            <strong data-en="Boss encounters" data-kr="보스 전투">Boss encounters</strong>
-            <span data-en="Progression payoff with spectacle — streamable and shareable." data-kr="볼거리 있는 진행 보상 — 스트리밍하기 좋고 공유하기 좋다.">Progression payoff with spectacle — streamable and shareable.</span>
-          </figcaption>
-        </figure>
-        <figure class="shot fade">
-          <img src="images/Single_Munk02.png" alt="Munk single play">
-          <figcaption class="caption">
-            <strong data-en="Precision movement" data-kr="정밀한 이동">Precision movement</strong>
-            <span data-en="Tight platforming that rewards skill without punishing fun." data-kr="재미를 해치지 않으면서 실력을 보상하는 타이트한 플랫포밍.">Tight platforming that rewards skill without punishing fun.</span>
-          </figcaption>
-        </figure>
-        <figure class="shot fade">
-          <img src="images/Co-op05.png" alt="Co-op play 2">
-          <figcaption class="caption">
-            <strong data-en="Shared problem solving" data-kr="함께 문제 해결">Shared problem solving</strong>
-            <span data-en="Same obstacle, two players, completely different approach." data-kr="같은 장애물, 두 플레이어, 완전히 다른 접근.">Same obstacle, two players, completely different approach.</span>
-          </figcaption>
-        </figure>
-        <figure class="shot fade">
-          <img src="images/Co-op_final.png" alt="Co-op clear">
-          <figcaption class="caption">
-            <strong data-en="Satisfying payoff" data-kr="통쾌한 보상">Satisfying payoff</strong>
-            <span data-en="Clear ceremony that makes both players feel like winners." data-kr="두 플레이어 모두 승리감을 느끼는 클리어 세레모니.">Clear ceremony that makes both players feel like winners.</span>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- POSITIONING -->
-  <section id="positioning">
-    <div class="container">
-      <div class="kicker fade" data-en="Market Position" data-kr="시장 포지셔닝">Market Position</div>
-      <h2 class="title fade" data-en="FAMILIAR READABILITY.<br>UNFAMILIAR CHEMISTRY." data-kr="익숙한 가독성.<br>낯선 케미스트리.">FAMILIAR READABILITY.<br>UNFAMILIAR CHEMISTRY.</h2>
-      <div class="positioning">
-        <div class="compare fade">
-          <h3 data-en="Reference language" data-kr="레퍼런스 포지셔닝">Reference language</h3>
-          <ul>
-            <li><strong>Rayman</strong> <span data-en="for readable platforming energy and approachable momentum." data-kr="— 읽기 쉬운 플랫포밍 에너지와 접근하기 좋은 모멘텀.">for readable platforming energy and approachable momentum.</span></li>
-            <li><strong>Mario</strong> <span data-en="for broadly understandable joy, movement clarity, and all-ages appeal." data-kr="— 폭넓게 이해되는 즐거움, 명확한 움직임, 전 연령 어필.">for broadly understandable joy, movement clarity, and all-ages appeal.</span></li>
-            <li><strong>Ori</strong> <span data-en="for environmental puzzle rhythm and elegant obstacle design." data-kr="— 환경 퍼즐 리듬과 우아한 장애물 디자인.">for environmental puzzle rhythm and elegant obstacle design.</span></li>
-          </ul>
-        </div>
-        <div class="compare fade">
-          <h3 data-en="Ownable twist" data-kr="우리만의 차별점">Ownable twist</h3>
-          <ul>
-            <li><strong data-en="Dual-animal identity" data-kr="이중 동물 정체성">Dual-animal identity</strong> <span data-en="gives a silhouette and brand hook people remember." data-kr="— 사람들이 기억하는 실루엣과 브랜드 훅.">gives a silhouette and brand hook people remember.</span></li>
-            <li><strong data-en="Solo-swap + local co-op" data-kr="솔로 교대 + 로컬 코옵">Solo-swap + local co-op</strong> <span data-en="makes the same mechanics marketable in two player fantasies." data-kr="— 같은 메카닉을 두 가지 플레이어 판타지로 마케팅 가능.">makes the same mechanics marketable in two player fantasies.</span></li>
-            <li><strong data-en="Clip-friendly chaos" data-kr="클립 친화적 카오스">Clip-friendly chaos</strong> <span data-en="increases discoverability beyond traditional platformer audiences." data-kr="— 전통적인 플랫포머 팬 너머의 발견 가능성.">increases discoverability beyond traditional platformer audiences.</span></li>
-          </ul>
+    <section id="screenshots-proof">
+      <div class="container">
+        <div class="eyebrow fade">Visual Proof</div>
+        <h2 class="section-title fade">SHOW THE FUN, DON'T JUST DESCRIBE IT</h2>
+        <p class="section-sub fade">This section should prove traversal contrast, puzzle interaction, and co-op reactions. If you don't have perfect images yet, use deliberate placeholders that explain what needs to be shown instead of leaving dead empty boxes.</p>
+        <div class="shot-grid">
+          <figure class="image-card fade">
+            <img src="images/Single_Deer01.png" alt="Deer single play">
+            <figcaption><strong data-en="Role contrast" data-kr="역할 대비">Role contrast</strong><span data-en="Different bodies, different routes, instant readability." data-kr="다른 몸, 다른 루트, 즉각적인 이해.">Different bodies, different routes, instant readability.</span></figcaption>
+          </figure>
+          <figure class="image-card fade">
+            <img src="images/Co-op04.png" alt="Co-op play">
+            <figcaption><strong data-en="Co-op chaos" data-kr="협동 난장판">Co-op chaos</strong><span data-en="Good co-op moments become social moments, clips, and word-of-mouth." data-kr="좋은 협동 순간은 클립이 되고 입소문이 된다.">Good co-op moments become social moments, clips, and word-of-mouth.</span></figcaption>
+          </figure>
+          <figure class="image-card fade">
+            <img src="images/Boss_01_fix.png" alt="Boss battle">
+            <figcaption><strong data-en="Boss encounters" data-kr="보스 전투">Boss encounters</strong><span data-en="Progression payoff with spectacle — streamable and shareable." data-kr="볼거리 있는 진행 보상 — 스트리밍하기 좋고 공유하기 좋다.">Progression payoff with spectacle — streamable and shareable.</span></figcaption>
+          </figure>
+          <figure class="image-card fade">
+            <img src="images/Single_Munk02.png" alt="Munk single play">
+            <figcaption><strong data-en="Precision movement" data-kr="정밀한 이동">Precision movement</strong><span data-en="Tight platforming that rewards skill without punishing fun." data-kr="재미를 해치지 않으면서 실력을 보상하는 플랫포밍.">Tight platforming that rewards skill without punishing fun.</span></figcaption>
+          </figure>
+          <figure class="image-card fade">
+            <img src="images/Co-op05.png" alt="Co-op play 2">
+            <figcaption><strong data-en="Shared problem solving" data-kr="함께 문제 해결">Shared problem solving</strong><span data-en="Same obstacle, two players, completely different approach." data-kr="같은 장애물, 두 플레이어, 완전히 다른 접근.">Same obstacle, two players, completely different approach.</span></figcaption>
+          </figure>
+          <figure class="image-card fade">
+            <img src="images/Co-op_final.png" alt="Co-op clear">
+            <figcaption><strong data-en="Satisfying payoff" data-kr="통쾌한 보상">Satisfying payoff</strong><span data-en="Clear ceremony that makes both players feel like winners." data-kr="두 플레이어 모두 승리감을 느끼는 클리어 세레모니.">Clear ceremony that makes both players feel like winners.</span></figcaption>
+          </figure>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WORLD & STORY -->
-  <section id="world">
-    <div class="container">
-      <div class="kicker fade" data-en="World and Story" data-kr="세계관과 스토리">World and Story</div>
-      <h2 class="title fade" data-en="THE STORY SUPPORTS THE PLAY,<br>NOT THE OTHER WAY AROUND" data-kr="스토리가 플레이를 받쳐준다,<br>반대가 아니라">THE STORY SUPPORTS THE PLAY,<br>NOT THE OTHER WAY AROUND</h2>
-      <div class="story-box fade">
-        <p data-en="When the Pig King's minions raid a peaceful squirrel village and steal its precious acorns, DA-munk and GO-rani set out to take them back. The setup is easy to understand, visually flexible, and strong enough to support 10 worlds of progression without slowing down the fun." data-kr="돼지왕의 부하들이 평화로운 다람쥐 마을을 습격해 도토리를 빼앗아 간다. 다람쥐와 고라니는 되찾으러 떠난다. 이해하기 쉽고, 시각적으로 유연하며, 재미를 방해하지 않으면서 10개 월드를 지탱할 만큼 탄탄하다.">When the Pig King's minions raid a peaceful squirrel village and steal its precious acorns, DA-munk and GO-rani set out to take them back. The setup is easy to understand, visually flexible, and strong enough to support 10 worlds of progression without slowing down the fun.</p>
-      </div>
-      <div class="story-imgs">
-        <img src="images/1_1.png" alt="Story image 1">
-        <img src="images/1_2.png" alt="Story image 2">
-      </div>
-    </div>
-  </section>
-
-  <!-- IP -->
-  <section id="ip">
-    <div class="container">
-      <div class="kicker fade" data-en="Commercial Angle" data-kr="상업적 관점">Commercial Angle</div>
-      <h2 class="title fade" data-en="THE CHARACTERS AREN'T<br>STARTING FROM ZERO" data-kr="이 캐릭터들은<br>제로에서 시작하지 않는다">THE CHARACTERS AREN'T<br>STARTING FROM ZERO</h2>
-      <p class="sub fade" data-en="GO-rani and DA-munk are based on KakaoTalk emoji characters — one of Korea's most widely used messaging platforms. The characters already have recognition, fan art potential, and merchandise legs." data-kr="고라니와 다람쥐는 카카오톡 이모티콘 캐릭터 기반이다 — 한국에서 가장 널리 사용되는 메시지 플랫폼 중 하나. 이미 인지도, 팬아트 가능성, 굿즈 잠재력이 있다.">GO-rani and DA-munk are based on KakaoTalk emoji characters — one of Korea's most widely used messaging platforms. The characters already have recognition, fan art potential, and merchandise legs.</p>
-      <div class="grid4">
-        <div class="ip-stat fade"><div class="big">98.9%</div><div class="small" data-en="KakaoTalk domestic usage rate in Korea" data-kr="한국 내 카카오톡 사용률">KakaoTalk domestic usage rate in Korea</div></div>
-        <div class="ip-stat fade"><div class="big">14yr</div><div class="small" data-en="Character history with proven fan engagement" data-kr="팬 참여가 검증된 캐릭터 히스토리">Character history with proven fan engagement</div></div>
-        <div class="ip-stat fade"><div class="big">IP</div><div class="small" data-en="Lowers brand-awareness cost vs. unknown mascots" data-kr="미지의 마스코트 대비 브랜드 인지 비용 절감">Lowers brand-awareness cost vs. unknown mascots</div></div>
-        <div class="ip-stat fade"><div class="big">FIT</div><div class="small" data-en="Expressive design supports merchandise, clips, thumbnails" data-kr="표현력 있는 디자인 — 굿즈, 클립, 썸네일에 적합">Expressive design supports merchandise, clips, thumbnails</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ROADMAP -->
-  <section id="roadmap">
-    <div class="container">
-      <div class="kicker fade" data-en="Production & Roadmap" data-kr="제작 현황 & 로드맵">Production & Roadmap</div>
-      <h2 class="title fade" data-en="CURRENT STATE AND NEXT MILESTONES" data-kr="현재 상태와 다음 마일스톤">CURRENT STATE AND NEXT MILESTONES</h2>
-      <div class="grid5">
-        <div class="step fade"><div class="badge done" data-en="Done" data-kr="완료">Done</div><div class="card-title" data-en="Game Complete" data-kr="게임 완성">Game Complete</div><div class="card-copy" data-en="200 stages, 10 worlds, 200+ costumes, full co-op system." data-kr="200 스테이지, 10월드, 200+ 코스튬, 완전한 코옵 시스템.">200 stages, 10 worlds, 200+ costumes, full co-op system.</div></div>
-        <div class="step fade"><div class="badge done" data-en="Done" data-kr="완료">Done</div><div class="card-title" data-en="10 Localizations" data-kr="10개 언어 현지화">10 Localizations</div><div class="card-copy" data-en="KR/EN/JP/ZH/TH/FR/IT/ES/DE/RU" data-kr="KR/EN/JP/ZH/TH/FR/IT/ES/DE/RU">KR/EN/JP/ZH/TH/FR/IT/ES/DE/RU</div></div>
-        <div class="step fade"><div class="badge now" data-en="Live" data-kr="출시 완료">Live</div><div class="card-title" data-en="Nintendo Switch" data-kr="닌텐도 스위치">Nintendo Switch</div><div class="card-copy" data-en="Launched June 25, 2026. Self-published." data-kr="2026년 6월 25일 출시. 자체 퍼블리싱.">Launched June 25, 2026. Self-published.</div></div>
-        <div class="step fade"><div class="badge next" data-en="Next" data-kr="예정">Next</div><div class="card-title" data-en="Steam Launch" data-kr="스팀 출시">Steam Launch</div><div class="card-copy" data-en="Summer 2026. App ID 1706282 registered." data-kr="2026년 여름. App ID 1706282 등록 완료.">Summer 2026. App ID 1706282 registered.</div></div>
-        <div class="step fade"><div class="badge next" data-en="Next" data-kr="예정">Next</div><div class="card-title" data-en="With Publisher" data-kr="퍼블리셔와 함께">With Publisher</div><div class="card-copy" data-en="QA, marketing, platform strategy, commercial execution." data-kr="QA, 마케팅, 플랫폼 전략, 상업적 실행.">QA, marketing, platform strategy, commercial execution.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEAM -->
-  <section id="team">
-    <div class="container">
-      <div class="kicker fade" data-en="The Team" data-kr="개발팀">The Team</div>
-      <h2 class="title fade" data-en="4 PEOPLE. 14 YEARS. SHIPS ON TIME." data-kr="4명. 14년. 제때 출시한다.">4 PEOPLE. 14 YEARS. SHIPS ON TIME.</h2>
-      <div class="team-wrap">
-        <div class="team-box fade">
-          <h3 data-en="Why we're credible" data-kr="왜 신뢰할 수 있는가">Why we're credible</h3>
-          <p data-en="IDIOCRACY, INC. has been shipping games across mobile, web, and console for 14 years. The Nintendo Switch version of Wacky is complete, live, and self-published — proof that this team finishes what it starts." data-kr="IDIOCRACY, INC.는 14년간 모바일, 웹, 콘솔 전반에서 게임을 출시해왔습니다. Wacky의 닌텐도 스위치 버전은 완성되어 자체 퍼블리싱으로 출시됐습니다 — 이 팀이 시작한 것을 끝낸다는 증거입니다.">IDIOCRACY, INC. has been shipping games across mobile, web, and console for 14 years. The Nintendo Switch version of Wacky is complete, live, and self-published — proof that this team finishes what it starts.</p>
-        </div>
-        <div class="team-box fade">
-          <h3 data-en="How to read us" data-kr="우리를 이렇게 보세요">How to read us</h3>
-          <div class="muted-list">
-            <div data-en="Small team, tight scope, no feature creep." data-kr="작은 팀, 명확한 범위, 군더더기 없음.">Small team, tight scope, no feature creep.</div>
-            <div data-en="We build games players actually complete and enjoy." data-kr="플레이어가 실제로 완료하고 즐기는 게임을 만든다.">We build games players actually complete and enjoy.</div>
-            <div data-en="Looking for a partner to amplify a game that's already legible and marketable." data-kr="이미 읽히고 마케팅 가능한 게임을 증폭시킬 파트너를 찾는다.">Looking for a partner to amplify a game that's already legible and marketable.</div>
+    <section id="positioning">
+      <div class="container">
+        <div class="eyebrow fade">Positioning</div>
+        <h2 class="section-title fade">NOT JUST CUTE, BUT MARKETABLY DISTINCT</h2>
+        <p class="section-sub fade">Reference games are useful only when they explain audience fit and product positioning. The goal is to show familiarity without sounding derivative.</p>
+        <div class="split">
+          <div class="quote-card fade">
+            <div class="card-title">Reference language</div>
+            <ul>
+              <li><strong>Rayman</strong> for readable platforming energy and approachable movement rhythm.</li>
+              <li><strong>Mario</strong> for broad accessibility, toy-like joy, and instant family-friendly readability.</li>
+              <li><strong>Ori</strong> for puzzle pacing and elegant environment-led progression.</li>
+            </ul>
+          </div>
+          <div class="quote-card fade">
+            <div class="card-title">Ownable angle</div>
+            <ul>
+              <li><strong>Dual-animal identity</strong> gives the game a silhouette and storefront memory hook.</li>
+              <li><strong>Solo swap plus co-op</strong> lets one mechanic base support two player fantasies.</li>
+              <li><strong>Clip-friendly chaos</strong> makes the game easier to surface outside traditional platformer audiences.</li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ASK -->
-  <section id="ask">
-    <div class="container">
-      <div class="kicker fade" data-en="What We're Looking For" data-kr="우리가 찾는 것">What We're Looking For</div>
-      <h2 class="title fade" data-en="NOT A PITCH. A QUESTION." data-kr="피치가 아니다. 질문이다.">NOT A PITCH. A QUESTION.</h2>
-      <p class="sub fade" data-en="We make games. You know how to show them to the world. If both sides see the potential — let's find out together." data-kr="게임은 우리가 만든다. 세상에 보여주는 건 당신이 잘 한다. 서로 가능성이 보인다면 — 함께 확인해보자.">We make games. You know how to show them to the world. If both sides see the potential — let's find out together.</p>
-      <div class="grid3">
-        <div class="card fade">
-          <div class="card-title" data-en="Steam Publishing" data-kr="스팀 퍼블리싱">Steam Publishing</div>
-          <div class="card-copy" data-en="Turn the game's visual readability and clip-friendly chaos into a sharp Steam launch story." data-kr="게임의 시각적 가독성과 클립 친화적 카오스를 강력한 스팀 출시 스토리로 만들어라.">Turn the game's visual readability and clip-friendly chaos into a sharp Steam launch story.</div>
-        </div>
-        <div class="card fade">
-          <div class="card-title" data-en="Honest Evaluation" data-kr="솔직한 평가">Honest Evaluation</div>
-          <div class="card-copy" data-en="Play it. If you see something — let's talk. If you don't, that's a fair answer too. We're not here to beg." data-kr="플레이해봐라. 뭔가 보이면 얘기하자. 안 보이면 그것도 좋은 답이다. 매달리러 온 게 아니다.">Play it. If you see something — let's talk. If you don't, that's a fair answer too. We're not here to beg.</div>
-        </div>
-        <div class="card fade">
-          <div class="card-title" data-en="Long-term Partnership" data-kr="장기 파트너십">Long-term Partnership</div>
-          <div class="card-copy" data-en="This IP has merchandise legs beyond the game. If it works, everything around it works too. We want a partner who sees where that goes." data-kr="이 IP는 게임 너머 굿즈 잠재력이 있다. 게임이 잘 되면 주변의 모든 것이 따라온다. 그걸 함께 보는 파트너를 원한다.">This IP has merchandise legs beyond the game. If it works, everything around it works too. We want a partner who sees where that goes.</div>
+    <section id="story">
+      <div class="container">
+        <div class="eyebrow fade">Story</div>
+        <h2 class="section-title fade">THE STORY SUPPORTS THE PLAY</h2>
+        <div class="story-box fade">
+          <p>When the Pig King's minions raid a peaceful squirrel village and steal its precious acorns, Dachip and Gordia set out to take them back. The setup is simple, legible, and emotionally clean, which is exactly why it works for this kind of action-adventure pitch: it gives the player a reason to move without burying the game under lore.</p>
         </div>
       </div>
+    </section>
 
-      <div class="footer-cta fade">
-        <h3>WACKY! DEER&amp;MUNK ADVENTURE</h3>
-        <p data-en="Weird, toyetic, streamable, and already live on Nintendo Switch. Steam is next. If you see what we see — let's find out together." data-kr="이상하고, 장난감 같고, 스트리밍하기 좋고, 이미 닌텐도 스위치에 출시됐다. 스팀이 다음이다. 당신도 같은 게 보인다면 — 함께 확인해보자.">Weird, toyetic, streamable, and already live on Nintendo Switch. Steam is next. If you see what we see — let's find out together.</p>
-        <a class="contact-line" href="mailto:contact@idiocracy.co.kr">contact@idiocracy.co.kr</a>
+    <section id="ip-section">
+      <div class="container">
+        <div class="eyebrow fade">Commercial Angle</div>
+        <h2 class="section-title fade">THE CHARACTERS AREN'T STARTING FROM ZERO</h2>
+        <p class="section-sub fade">Keep this section factual and concise. It should read as risk reduction and recognition value, not as a detour away from gameplay.</p>
+        <div class="ip-grid">
+          <div class="stat-card fade">
+            <div class="ip-value">98.9%</div>
+            <div class="ip-note">KakaoTalk domestic usage figure already referenced in the current pitch material.</div>
+          </div>
+          <div class="stat-card fade">
+            <div class="ip-value">14</div>
+            <div class="ip-note">Years of Kakao emoji history referenced in the existing deck context.</div>
+          </div>
+          <div class="stat-card fade">
+            <div class="ip-value">IP</div>
+            <div class="ip-note">Recognizable character context lowers the burden of introducing a fully unknown mascot game.</div>
+          </div>
+          <div class="stat-card fade">
+            <div class="ip-value">FIT</div>
+            <div class="ip-note">Strong expressions and readable silhouettes support clips, thumbnails, and storefront impressions.</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<script>
-function setLang(lang){
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-  document.querySelectorAll('[data-en]').forEach(el=>{
-    const val = el.getAttribute('data-'+lang)||el.getAttribute('data-en');
-    if(el.tagName==='A'||el.tagName==='BUTTON'){el.textContent=val;}
-    else{el.innerHTML=val;}
-  });
-  // 타이틀 이미지
-  document.getElementById('title-en').style.display = lang==='kr'?'none':'block';
-  document.getElementById('title-kr').style.display = lang==='kr'?'block':'none';
-}
-// 초기값 EN
-setLang('en');
+    <section id="roadmap">
+      <div class="container">
+        <div class="eyebrow fade">Production</div>
+        <h2 class="section-title fade">CURRENT BUILD AND NEXT MILESTONES</h2>
+        <p class="section-sub fade">This section should reassure a publisher that the game is already a real product path, not just a concept page. Use clear milestone language and avoid vague optimism.</p>
+        <div class="roadmap-grid">
+          <div class="timeline-card fade">
+            <div class="status done">Done</div>
+            <div class="card-title" data-en="Game Complete" data-kr="게임 완성">Game Complete</div>
+            <div class="card-copy" data-en="200 stages, 10 worlds, 200+ costumes, co-op system, 10 localizations." data-kr="200 스테이지, 10월드, 200+ 코스튬, 코옵 시스템, 10개 현지화.">200 stages, 10 worlds, 200+ costumes, co-op system, 10 localizations.</div>
+          </div>
+          <div class="timeline-card fade">
+            <div class="status done">Done</div>
+            <div class="card-title" data-en="Nintendo Switch — Live" data-kr="닌텐도 스위치 — 출시 완료">Nintendo Switch — Live</div>
+            <div class="card-copy" data-en="Launched June 25, 2026. Self-published. KR/JP/EU/GB storefronts." data-kr="2026년 6월 25일 출시. 자체 퍼블리싱. 한국/일본/EU/GB 스토어.">Launched June 25, 2026. Self-published. KR/JP/EU/GB storefronts.</div>
+          </div>
+          <div class="timeline-card fade">
+            <div class="status now">Now</div>
+            <div class="card-title" data-en="Steam — Summer 2026" data-kr="스팀 — 2026년 여름">Steam — Summer 2026</div>
+            <div class="card-copy" data-en="App ID 1706282 registered. Coming Soon page in setup." data-kr="App ID 1706282 등록 완료. Coming Soon 페이지 준비 중.">App ID 1706282 registered. Coming Soon page in setup.</div>
+          </div>
+          <div class="timeline-card fade">
+            <div class="status next">Next</div>
+            <div class="card-title" data-en="Steam Next Fest" data-kr="스팀 넥스트 페스트">Steam Next Fest</div>
+            <div class="card-copy" data-en="October 2026. Demo participation target." data-kr="2026년 10월. 데모 참가 목표.">October 2026. Demo participation target.</div>
+          </div>
+          <div class="timeline-card fade">
+            <div class="status next">Next</div>
+            <div class="card-title" data-en="With Publisher" data-kr="퍼블리셔와 함께">With Publisher</div>
+            <div class="card-copy" data-en="QA, marketing strategy, platform ops, global distribution." data-kr="QA, 마케팅 전략, 플랫폼 운영, 글로벌 유통.">QA, marketing strategy, platform ops, global distribution.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-// fade-in
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
-},{threshold:.1});
-document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
-</script>
+    <section id="team">
+      <div class="container">
+        <div class="eyebrow fade">Team</div>
+        <h2 class="section-title fade">SMALL TEAM, CREDIBLE DELIVERY STORY</h2>
+        <div class="team-grid">
+          <div class="panel fade">
+            <div class="card-title" data-en="Why we're credible" data-kr="왜 신뢰할 수 있는가">Why we're credible</div>
+            <div class="card-copy" data-en="IDIOCRACY, INC. has been shipping games across mobile, web, and console for 14 years. The Nintendo Switch version is complete and live — proof this team finishes what it starts. Four people. Tight scope. No feature creep." data-kr="IDIOCRACY, INC.는 14년간 모바일, 웹, 콘솔 전반에서 게임을 출시해왔습니다. 닌텐도 스위치 버전은 완성되어 출시됐습니다 — 팀이 시작한 것을 끝낸다는 증거. 4명. 명확한 범위. 군더더기 없음.">IDIOCRACY, INC. has been shipping games across mobile, web, and console for 14 years. The Nintendo Switch version is complete and live — proof this team finishes what it starts. Four people. Tight scope. No feature creep.</div>
+          </div>
+          <div class="panel fade">
+            <div class="card-title" data-en="4 people. 14 years." data-kr="4명. 14년.">4 people. 14 years.</div>
+            <div class="card-copy" data-en="Captain (CEO), Mr. Choi (technical lead, 25+ yrs), BoiledLemon (game design, 7+ yrs), MSKim (art, 7+ yrs). Same core team since the beginning. Small and fast." data-kr="Captain (CEO), Mr. Choi (기술총괄, 25년+), BoiledLemon (게임디자인, 7년+), MSKim (아트, 7년+). 처음부터 같은 코어팀. 작고 빠르다.">Captain (CEO), Mr. Choi (technical lead, 25+ yrs), BoiledLemon (game design, 7+ yrs), MSKim (art, 7+ yrs). Same core team since the beginning. Small and fast.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ask">
+      <div class="container">
+        <div class="eyebrow fade">Ask</div>
+        <h2 class="section-title fade">WHAT WE'RE LOOKING FOR</h2>
+        <p class="section-sub fade">Make the ask feel like leverage, not rescue. The game should already look viable on its own, with the publisher multiplying what is already working.</p>
+        <div class="ask-grid">
+          <div class="ask-card fade">
+            <div class="card-title">Funding</div>
+            <div class="card-copy">Support final production, content completion, and polish without inflating the scope beyond the game's strongest identity.</div>
+          </div>
+          <div class="ask-card fade">
+            <div class="card-title">Marketing</div>
+            <div class="card-copy">Turn the game's visual clarity and co-op reaction value into a sharper launch story and stronger discovery beats.</div>
+          </div>
+          <div class="ask-card fade">
+            <div class="card-title">Platform support</div>
+            <div class="card-copy">Use publishing experience for QA, store positioning, release timing, and broader commercial execution.</div>
+          </div>
+        </div>
+
+        <div class="footer-callout fade">
+          <h3>WACKY! DEER&amp;MUNK ADVENTURE</h3>
+          <p data-en="Weird, toyetic, streamable, and already live on Nintendo Switch. Steam is next. If you see what we see — let's find out together." data-kr="이상하고, 장난감 같고, 스트리밍하기 좋고, 이미 닌텐도 스위치에 출시됐다. 스팀이 다음이다. 당신도 같은 게 보인다면 — 함께 확인해보자.">Weird, toyetic, streamable, and already live on Nintendo Switch. Steam is next. If you see what we see — let's find out together.</p>
+          <a class="contact-pill" href="mailto:contact@idiocracy.co.kr" style="text-decoration:none;">contact@idiocracy.co.kr</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <script>
+    function setLang(lang){
+      document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+      document.querySelectorAll('[data-en]').forEach(el=>{
+        const val = el.getAttribute('data-'+lang)||el.getAttribute('data-en');
+        if(el.tagName==='A'||el.tagName==='BUTTON'||el.tagName==='DIV'||el.tagName==='SPAN'||el.tagName==='P'){
+          el.innerHTML=val;
+        }
+      });
+      document.getElementById('title-en').style.display = lang==='kr'?'none':'block';
+      document.getElementById('title-kr').style.display = lang==='kr'?'block':'none';
+    }
+    setLang('en');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
